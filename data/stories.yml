@@ -8,3 +8,7 @@ stories:
   - action: utter_introduce
   - action: utter_ask_for_instructions
 
+- story: lista_asignaturas
+  steps:
+  - intent: lista_asignaturas
+  - action: action_ver_asignaturas

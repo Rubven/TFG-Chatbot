@@ -2,6 +2,6 @@ credentials.yml
 
 models/
 tests/
-actions/
+actions/__pycache__/
 
 ngrok

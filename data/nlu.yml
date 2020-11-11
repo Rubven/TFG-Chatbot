@@ -9,6 +9,12 @@ nlu:
     - buenos días
     - buenas tardes
 
+- intent: introduce
+  examples: |
+    - Mi nombre es [Alfonso](name)
+    - Soy [Sara](name)
+    - Me llamo [Juan](name)
+
 - intent: goodbye
   examples: |
     - adiós
@@ -39,6 +45,14 @@ nlu:
     - mal
     - error
     - incorrecto
+
+- intent: lista_asignturas
+  examples: |
+    - lista de asignaturas
+    - qué asignaturas hay?
+    - enséñame las asignaturas
+    - qué clases tienes?
+    - lista de clases
 
 - intent: action_list
   examples: |
