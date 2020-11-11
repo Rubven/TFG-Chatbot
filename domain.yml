@@ -1,0 +1,31 @@
+version: "2.0"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - action_list
+
+responses:
+  utter_introduce:
+  - text: "Hola! Soy Edubot."
+
+  utter_greet:
+  - text: "Hola!"
+
+  utter_ask_for_instructions:
+  - text: "En qué puedo ayudarte?"
+
+  utter_action_list:
+  - text: "Aquí tienes una lista de las acciones que puedo realizar:"
+
+  utter_dont_understand:
+  - text: "Creo que no te he entendido. Podrías repetirme qué quieres que haga?"
+
+  utter_goodbye:
+  - text: "Hasta pronto!"
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

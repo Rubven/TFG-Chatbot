@@ -1,0 +1,10 @@
+version: "2.0"
+
+stories:
+
+- story: saludo
+  steps:
+  - intent: greet
+  - action: utter_introduce
+  - action: utter_ask_for_instructions
+

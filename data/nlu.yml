@@ -1,0 +1,48 @@
+version: "2.0"
+
+nlu:
+- intent: greet
+  examples: |
+    - hola
+    - buenas
+    - saludos
+    - buenos días
+    - buenas tardes
+
+- intent: goodbye
+  examples: |
+    - adiós
+    - hasta luego
+    - nos vemos
+    - me voy
+    - me marcho
+    - hablamos
+
+- intent: affirm
+  examples: |
+    - sí
+    - se
+    - seh
+    - correcto
+    - en efecto
+    - así es
+    - bien
+    - exacto
+
+- intent: deny
+  examples: |
+    - no
+    - nah
+    - nunca
+    - creo que no
+    - no es así
+    - mal
+    - error
+    - incorrecto
+
+- intent: action_list
+  examples: |
+    - qué puedes hacer?
+    - lista de acciones
+    - enumera lo que puedes hacer
+    - qué acciones puedes realizar?
