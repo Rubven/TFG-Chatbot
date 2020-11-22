@@ -26,22 +26,49 @@
 #
 #         return []
 
-
-#modificado de: https://rasa.com/docs/action-server/sdk-actions
-from rasa_sdk import Action
+# -------------------------------------------------------------------
+# Connect to DB
+# -------------------------------------------------------------------
+# modificado de: https://rasa.com/docs/action-server/sdk-actions
+from typing import Any, Text, Dict, List
+from rasa_sdk import Action, Tracker
+from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import SlotSet
+
+import mysql.connector
+c = mysql.connector.connect(	
+	user='rasa',
+	password='rasapwd',
+	host='localhost',
+	database='chatbot_db',
+	auth_plugin='mysql_native_password'
+)
+#mycursor = c.cursor(buffered=True)
+mycursor = c.cursor()
 
 class ActionVerAsignaturas(Action):
 	def name(self) -> Text:
 		return "action_ver_asignaturas"
 		
+	
 	def run(self,
 			dispatcher: CollectingDispatcher,
 			tracker: Tracker,
-			domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-			
-		q = "SELECT nombre FROM asignaturas"
-		result = db.query(q)
+			#domain: Dict[Text, Any]) -> List[Dict[List, Any]]:
+			domain):
+					
+		q = ("SELECT nombre FROM asignaturas")
+
+		mycursor.execute(q)
+		result = mycursor.fetchall()
+				
+		for item in result:
+			print(item[0])
+			dispatcher.utter_message(item[0])
 		
-		return[result if result is not None else []]
-		
+		#return[result if result is not None else []]
+		return []
+
+
+
+				

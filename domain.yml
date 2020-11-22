@@ -2,30 +2,39 @@ version: "2.0"
 
 # intents
 intents:
-  - greet
-  - goodbye
-  - affirm
-  - deny
-  - action_list
-  - lista_asignaturas
+- greet
+- introduce
+- goodbye
+- affirm
+- deny
+- action_list
+- lista_asignaturas
 
 # obtenidas con la NLU Pipeline
 entities:
-  - nombre
+  - user_name
   - asignatura
+
+# cumstom actions
+actions:
+  - action_ver_asignaturas
+  - action_set_username
 
 # memoria del bot
 slots:
-  slot_user_name:
+  name:
     type: text
 
 # respuestas
 responses:
   utter_introduce:
-  - text: "Hola! Soy Edubot."
+  - text: "Hola! Soy Edubot. Encantado de conocerte."
 
-  utter_greet:
-  - text: "Hola!"
+  utter_greet_user:
+  - text: "Hola, {name}!"
+
+  utter_ask_name:
+  - text: "Cómo debería llamarte?"
 
   utter_ask_for_instructions:
   - text: "En qué puedo ayudarte?"
@@ -38,10 +47,6 @@ responses:
 
   utter_goodbye:
   - text: "Hasta pronto!"
-
-# cumstom actions
-actions:
-  - action_ver_asignaturas
 
 session_config:
   session_expiration_time: 60

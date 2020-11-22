@@ -3,6 +3,7 @@ version: "2.0"
 nlu:
 - intent: greet
   examples: |
+    - Hola
     - hola
     - buenas
     - saludos
@@ -14,6 +15,8 @@ nlu:
     - Mi nombre es [Alfonso](name)
     - Soy [Sara](name)
     - Me llamo [Juan](name)
+    - Llámame [Miguel]
+    - [Pedro](name)
 
 - intent: goodbye
   examples: |
@@ -46,7 +49,7 @@ nlu:
     - error
     - incorrecto
 
-- intent: lista_asignturas
+- intent: lista_asignaturas
   examples: |
     - lista de asignaturas
     - qué asignaturas hay?

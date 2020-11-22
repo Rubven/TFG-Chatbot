@@ -2,11 +2,10 @@ version: "2.0"
 
 stories:
 
-- story: saludo
+- story: saludar_usuario (si está registrado)
   steps:
   - intent: greet
-  - action: utter_introduce
-  - action: utter_ask_for_instructions
+  - action: utter_greet_user
 
 - story: lista_asignaturas
   steps:

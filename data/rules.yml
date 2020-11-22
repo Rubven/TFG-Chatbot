@@ -6,3 +6,10 @@ rules:
   steps:
   - intent: goodbye
   - action: utter_goodbye
+  
+- rule: saludar_usuario
+  steps:
+  - intent: greet
+    entities:
+      - user_name
+  - action: utter_greet_user
