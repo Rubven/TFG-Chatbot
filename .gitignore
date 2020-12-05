@@ -1,5 +1,6 @@
 .gitignore
 credentials.yml
+run_actions.bat
 
 models/
 tests/

@@ -57,17 +57,9 @@ nlu:
     - qué clases tienes?
     - lista de clases
 
-<<<<<<< HEAD
 - intent: lista_acciones
-=======
-- intent: action_list
->>>>>>> 30db7126ea702d15d4c60c60dab46de4ae01319b
   examples: |
     - qué puedes hacer?
     - lista de acciones
     - enumera lo que puedes hacer
-<<<<<<< HEAD
     - qué acciones puedes realizar?
-=======
-    - qué acciones puedes realizar?
->>>>>>> 30db7126ea702d15d4c60c60dab46de4ae01319b
