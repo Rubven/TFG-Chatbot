@@ -5,4 +5,15 @@ rules:
 - rule: Say goodbye anytime the user says goodbye
   steps:
   - intent: goodbye
+<<<<<<< HEAD
   - action: utter_goodbye
+=======
+  - action: utter_goodbye
+  
+- rule: saludar_usuario
+  steps:
+  - intent: greet
+    entities:
+      - user_name
+  - action: utter_greet_user
+>>>>>>> 30db7126ea702d15d4c60c60dab46de4ae01319b

@@ -1,0 +1,10 @@
+.gitignore
+credentials.yml
+
+models/
+tests/
+actions/__pycache__/
+
+ngrok*
+mysql*
+diagrams*

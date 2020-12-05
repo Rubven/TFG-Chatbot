@@ -2,6 +2,7 @@ version: "2.0"
 
 # intents
 intents:
+<<<<<<< HEAD
   - greet
   - introduce
   - goodbye
@@ -24,14 +25,48 @@ slots:
     type: text  #no existe int
   usuario_existe:
     type: bool
+=======
+- greet
+- introduce
+- goodbye
+- affirm
+- deny
+- action_list
+- lista_asignaturas
+
+# obtenidas con la NLU Pipeline
+entities:
+  - user_name
+  - asignatura
+
+# cumstom actions
+actions:
+  - action_ver_asignaturas
+  - action_set_username
+
+# memoria del bot
+slots:
+  name:
+    type: text
+>>>>>>> 30db7126ea702d15d4c60c60dab46de4ae01319b
 
 # respuestas
 responses:
   utter_introduce:
+<<<<<<< HEAD
   - text: "Hola! Soy Edubot."
 
   utter_greet_user:
   - text: "Hola, {nombre_usuario}! Todo bien?"
+=======
+  - text: "Hola! Soy Edubot. Encantado de conocerte."
+
+  utter_greet_user:
+  - text: "Hola, {name}!"
+
+  utter_ask_name:
+  - text: "Cómo debería llamarte?"
+>>>>>>> 30db7126ea702d15d4c60c60dab46de4ae01319b
 
   utter_ask_for_instructions:
   - text: "En qué puedo ayudarte?"
@@ -45,6 +80,7 @@ responses:
   utter_goodbye:
   - text: "Hasta pronto!"
 
+<<<<<<< HEAD
 # cumstom actions
 actions:
   - action_ver_asignaturas
@@ -54,3 +90,8 @@ actions:
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
+=======
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+>>>>>>> 30db7126ea702d15d4c60c60dab46de4ae01319b

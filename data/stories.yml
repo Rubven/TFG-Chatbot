@@ -1,6 +1,7 @@
 version: "2.0"
 
 stories:
+<<<<<<< HEAD
 # Lista asignaturas
 - story: lista asignaturas
   steps:
@@ -26,3 +27,15 @@ stories:
   - slot_was_set:
     - usuario_existe: True
   - action: utter_greet_user
+=======
+
+- story: saludar_usuario (si está registrado)
+  steps:
+  - intent: greet
+  - action: utter_greet_user
+
+- story: lista_asignaturas
+  steps:
+  - intent: lista_asignaturas
+  - action: action_ver_asignaturas
+>>>>>>> 30db7126ea702d15d4c60c60dab46de4ae01319b
