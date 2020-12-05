@@ -3,10 +3,6 @@ version: "2.0"
 nlu:
 - intent: greet
   examples: |
-<<<<<<< HEAD
-=======
-    - Hola
->>>>>>> 30db7126ea702d15d4c60c60dab46de4ae01319b
     - hola
     - buenas
     - saludos
@@ -15,20 +11,12 @@ nlu:
 
 - intent: introduce
   examples: |
-<<<<<<< HEAD
     - Mi nombre es [Alfonso](nombre_usuario)
     - Soy [Alara](nombre_usuario)
     - Soy [alicia]
     - Me llamo [Juan](nombre_usuario)
     - Llámame [Pedro](nombre_usuario)
     - [Sonia](nombre_usuario)
-=======
-    - Mi nombre es [Alfonso](name)
-    - Soy [Sara](name)
-    - Me llamo [Juan](name)
-    - Llámame [Miguel]
-    - [Pedro](name)
->>>>>>> 30db7126ea702d15d4c60c60dab46de4ae01319b
 
 - intent: goodbye
   examples: |

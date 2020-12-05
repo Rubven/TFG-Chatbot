@@ -12,17 +12,10 @@ pipeline:
   - name: RegexFeaturizer
   - name: LexicalSyntacticFeaturizer
   - name: CountVectorsFeaturizer
-<<<<<<< HEAD
   # - name: CountVectorsFeaturizer
   #   analyzer: "char_wb"
   #   min_ngram: 1
   #   max_ngram: 4
-=======
-  - name: CountVectorsFeaturizer
-    analyzer: "char_wb"
-    min_ngram: 1
-    max_ngram: 4
->>>>>>> 30db7126ea702d15d4c60c60dab46de4ae01319b
   - name: DIETClassifier
     epochs: 100
   - name: EntitySynonymMapper
@@ -35,19 +28,11 @@ pipeline:
 # Configuration for Rasa Core.
 # https://rasa.com/docs/rasa/core/policies/
 policies:
-<<<<<<< HEAD
 # # No configuration for policies was provided. The following default policies were used to train your model.
 # # If you'd like to customize them, uncomment and adjust the policies.
 # # See https://rasa.com/docs/rasa/policies for more information.
-=======
-# See https://rasa.com/docs/rasa/policies for more information.
->>>>>>> 30db7126ea702d15d4c60c60dab46de4ae01319b
   - name: MemoizationPolicy
   - name: TEDPolicy
     max_history: 5
     epochs: 100
-<<<<<<< HEAD
   - name: RulePolicy
-=======
-  - name: RulePolicy
->>>>>>> 30db7126ea702d15d4c60c60dab46de4ae01319b

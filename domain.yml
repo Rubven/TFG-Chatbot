@@ -2,7 +2,6 @@ version: "2.0"
 
 # intents
 intents:
-<<<<<<< HEAD
   - greet
   - introduce
   - goodbye
@@ -25,30 +24,6 @@ slots:
     type: text  #no existe int
   usuario_existe:
     type: bool
-=======
-- greet
-- introduce
-- goodbye
-- affirm
-- deny
-- action_list
-- lista_asignaturas
-
-# obtenidas con la NLU Pipeline
-entities:
-  - user_name
-  - asignatura
-
-# cumstom actions
-actions:
-  - action_ver_asignaturas
-  - action_set_username
-
-# memoria del bot
-slots:
-  name:
-    type: text
->>>>>>> 30db7126ea702d15d4c60c60dab46de4ae01319b
 
 # respuestas
 responses:
