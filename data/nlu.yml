@@ -1,0 +1,65 @@
+version: "2.0"
+
+nlu:
+- intent: greet
+  examples: |
+    - hola
+    - buenas
+    - saludos
+    - buenos días
+    - buenas tardes
+
+- intent: introduce
+  examples: |
+    - Mi nombre es [Alfonso](nombre_usuario)
+    - Soy [Alara](nombre_usuario)
+    - Soy [alicia]
+    - Me llamo [Juan](nombre_usuario)
+    - Llámame [Pedro](nombre_usuario)
+    - [Sonia](nombre_usuario)
+
+- intent: goodbye
+  examples: |
+    - adiós
+    - hasta luego
+    - nos vemos
+    - me voy
+    - me marcho
+    - hablamos
+
+- intent: affirm
+  examples: |
+    - sí
+    - se
+    - seh
+    - correcto
+    - en efecto
+    - así es
+    - bien
+    - exacto
+
+- intent: deny
+  examples: |
+    - no
+    - nah
+    - nunca
+    - creo que no
+    - no es así
+    - mal
+    - error
+    - incorrecto
+
+- intent: lista_asignaturas
+  examples: |
+    - lista de asignaturas
+    - qué asignaturas hay?
+    - enséñame las asignaturas
+    - qué clases tienes?
+    - lista de clases
+
+- intent: lista_acciones
+  examples: |
+    - qué puedes hacer?
+    - lista de acciones
+    - enumera lo que puedes hacer
+    - qué acciones puedes realizar?

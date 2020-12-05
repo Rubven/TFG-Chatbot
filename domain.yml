@@ -1,0 +1,56 @@
+version: "2.0"
+
+# intents
+intents:
+  - greet
+  - introduce
+  - goodbye
+  - affirm
+  - deny
+  - lista_acciones
+  - lista_asignaturas
+
+# obtenidas con la NLU Pipeline
+entities:
+  - nombre_usuario
+  - asignatura
+  - user_id
+
+# memoria del bot
+slots:
+  nombre_usuario:
+    type: text
+  user_id:
+    type: text  #no existe int
+  usuario_existe:
+    type: bool
+
+# respuestas
+responses:
+  utter_introduce:
+  - text: "Hola! Soy Edubot."
+
+  utter_greet_user:
+  - text: "Hola, {nombre_usuario}! Todo bien?"
+
+  utter_ask_for_instructions:
+  - text: "En qué puedo ayudarte?"
+
+  utter_action_list:
+  - text: "Aquí tienes una lista de las acciones que puedo realizar:"
+
+  utter_dont_understand:
+  - text: "Creo que no te he entendido. Podrías repetirme qué quieres que haga?"
+
+  utter_goodbye:
+  - text: "Hasta pronto!"
+
+# cumstom actions
+actions:
+  - action_ver_asignaturas
+  - action_usuario_existe
+
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
