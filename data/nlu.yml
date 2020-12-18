@@ -5,6 +5,9 @@ nlu:
   examples: |
     - hola
     - buenas
+    - hey
+    - ey
+    - encantado
     - saludos
     - buenos días
     - buenas tardes
@@ -17,10 +20,14 @@ nlu:
     - Me llamo [Juan](nombre_usuario)
     - Llámame [Pedro](nombre_usuario)
     - [Sonia](nombre_usuario)
+    - [juan](nombre_usuario)
 
 - intent: goodbye
   examples: |
     - adiós
+    - adios
+    - chao
+    - ciao
     - hasta luego
     - nos vemos
     - me voy
@@ -55,7 +62,9 @@ nlu:
     - qué asignaturas hay?
     - enséñame las asignaturas
     - qué clases tienes?
-    - lista de clases
+    - Lista de clases
+    - a qué clases me puedo apuntar?
+    - apuntarme a clases
 
 - intent: lista_acciones
   examples: |
@@ -63,3 +72,17 @@ nlu:
     - lista de acciones
     - enumera lo que puedes hacer
     - qué acciones puedes realizar?
+    - acciones
+
+- intent: out_of_scope
+  examples: |
+    - Pedir comida
+    - Cuál es la temperatura en Florida?
+    - Quién pintó el Guernica?
+    - quiero aprobar
+    - Qué tiempo hará mañana?
+    - Quiero billetes de avión
+    - Lista de la compra
+    - lista de películas
+    - lista de precios móbiles
+    - quiero un té

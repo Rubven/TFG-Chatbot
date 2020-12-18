@@ -2,7 +2,33 @@ version: "2.0"
 
 rules:
 
+# Saludar y comprobar si usuario existe
+# - rule: Greet and check
+#   steps:
+#   - intent: greet
+#   - action: action_usuario_existe
+
+# Despedirse del usuario cuando diga adiós
 - rule: Say goodbye anytime the user says goodbye
   steps:
   - intent: goodbye
   - action: utter_goodbye
+
+# Cuando se detecta una petición fuera de las posibilidades
+- rule: out-of-scope
+  steps:
+  - intent: out_of_scope
+  - action: utter_out_of_scope
+
+# Cuando no se entiende la petición, pedir otra vez
+- rule: Didn't understand
+  steps:
+  - intent: nlu_fallback
+  - action: utter_rephrase
+
+# Mostrar acciones
+- rule: Mostrar acciones
+  steps:
+  - intent: lista_acciones
+  - action: utter_action_list
+  - action: action_lista_acciones 

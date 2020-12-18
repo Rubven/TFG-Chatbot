@@ -8,21 +8,59 @@ stories:
   - action: action_ver_asignaturas
 
 
+# Lista acciones
+- story: lista acciones
+  steps:
+  - intent: lista_acciones
+  - action: utter_action_list
+  - action: action_lista_acciones
+
+# Saludo (inicio flujo)
+# - story: saludar usuario
+#   steps:
+#   - intent: greet
+#   - action: action_usuario_existe
+#   - checkpoint: check_usuario_existe
+
+
+# Saludar usuario nuevo, pedir nombre y registrar
 - story: saludar usuario nuevo y añadir BD
   steps:
   - intent: greet
   - action: action_usuario_existe
+  # - checkpoint: check_usuario_existe
   - slot_was_set:
     - usuario_existe: False
   - action: utter_introduce
-  # Pedir nombre
-  # Inscribir
-  # Pedir asignaturas
+  - action: utter_ask_name
+  - intent: introduce
+    entities:
+    - nombre_usuario
+  # - action: user_name_form
+  - action: action_guardar_nombre_usuario
+  - action: utter_user_registered
+  - action: utter_ask_for_instructions
 
+
+# Saludar usuario existente por su nombre y pedir instrucciones
 - story: saludar usuario existente
   steps:
   - intent: greet
   - action: action_usuario_existe
+  - slot{"nombre_usuario": Nombre}
+  # - checkpoint: check_usuario_existe
   - slot_was_set:
     - usuario_existe: True
   - action: utter_greet_user
+  - action: utter_ask_for_instructions
+
+
+# Horarios asignaturas
+
+
+
+# Registrarse en asignaturas
+
+
+
+# Out-of-scope

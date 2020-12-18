@@ -1,6 +1,6 @@
 .gitignore
 credentials.yml
-run_actions.bat
+
 
 models/
 tests/
@@ -9,3 +9,4 @@ actions/__pycache__/
 ngrok*
 mysql*
 diagrams*
+*.bat

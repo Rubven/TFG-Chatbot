@@ -34,14 +34,14 @@ from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import SlotSet, FollowupAction
 
 import mysql.connector
-c = mysql.connector.connect(
+mydb = mysql.connector.connect(
 	user='rasa',
 	password='rasapwd',
 	host='localhost',
 	database='chatbot_db',
 	auth_plugin='mysql_native_password',
 )
-mycursor = c.cursor()
+mycursor = mydb.cursor()
 
 
 class ActionVerAsignaturas(Action):
@@ -61,6 +61,31 @@ class ActionVerAsignaturas(Action):
 			dispatcher.utter_message(item[0])
 		mycursor.reset()
 
+		return []
+
+
+class ActionListaAcciones(Action):
+	def name(self) -> Text:
+		return "action_lista_acciones"
+		
+	def run(self,
+			dispatcher: CollectingDispatcher,
+			tracker: Tracker,
+			domain):
+			
+		acciones = [
+			'Saludar',
+			'Despedir',
+			'Ver acciones',
+			'Ver asignaturas',
+			'Registrar usuario',
+			'Registrar usuario en asignatura (desarrollo -> botones)',
+			'Consultar horario asignatura (desarrollo -> botones)'
+			
+		]
+
+		for accion in acciones:
+			dispatcher.utter_message(accion)
 		return []
 
 
@@ -96,3 +121,48 @@ class ActionUsuarioExiste(Action):
 			return[SlotSet("usuario_existe", False)]
 
 
+class ActionGuardarNombreUsuario(Action):
+	def name(self) -> Text:
+		return "action_guardar_nombre_usuario"
+	
+	def run(self,
+			dispatcher,
+			tracker: Tracker,
+			domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+		uid = tracker.sender_id	
+		nombre = tracker.get_slot('nombre_usuario')
+		
+		q = ("INSERT INTO usuario (id, nombre) VALUES ('{uid}','{nombre}')".format(uid=uid, nombre=nombre))
+		mycursor.execute(q)
+		mydb.commit()
+		mycursor.reset()
+
+		return []
+
+class ActionListaAsignaturasRegistrado(Action):
+	def name(self) -> Text:
+		return "action_lista_asignaturas_registrado"
+		
+	def run(self,
+			dispatcher: CollectingDispatcher,
+			tracker: Tracker,
+			domain):
+			
+		uid = tracker.sender_id	
+		
+		q = ("""SELECT nombre 
+				FROM asignatura, usuario, usuario-asignatura 
+				WHERE asignatura.id = usuario-asignatura.asignatura_id
+				AND asignatura.curso='2020-2021'
+				AND usuario.id = usuario-asignatura.usuario_id 
+				AND usuario.id = '{}'""".format(uid))
+		
+		mycursor.execute(q)
+		result = mycursor.fetchall()
+
+		for item in result:
+			dispatcher.utter_message(item[0])
+		mycursor.reset()
+
+		return []

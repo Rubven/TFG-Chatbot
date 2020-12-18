@@ -7,6 +7,7 @@ intents:
   - goodbye
   - affirm
   - deny
+  - out_of_scope
   - lista_acciones
   - lista_asignaturas
 
@@ -20,10 +21,21 @@ entities:
 slots:
   nombre_usuario:
     type: text
+    influence_conversation: true
   user_id:
-    type: text  #no existe int
+    type: text  
+    influence_conversation: true
   usuario_existe:
     type: bool
+    influence_conversation: true
+
+# formularios
+# forms:
+#   user_name_form:
+#     nombre_usuario:
+#     - type: from_entity
+#       entity: nombre_usuario
+
 
 # respuestas
 responses:
@@ -31,16 +43,25 @@ responses:
   - text: "Hola! Soy Edubot."
 
   utter_greet_user:
-  - text: "Hola, {nombre_usuario}! Todo bien?"
+  - text: "Hola, {nombre_usuario}!"
+
+  utter_user_registered:
+  - text: "Encantado, {nombre_usuario}. Ya estás registrado"
+
+  utter_ask_name:
+  - text: "Esta es la primera vez que hablamos. Cómo debería llamarte?"
 
   utter_ask_for_instructions:
   - text: "En qué puedo ayudarte?"
 
   utter_action_list:
-  - text: "Aquí tienes una lista de las acciones que puedo realizar:"
+  - text: "Aquí tienes una lista de las acciones que puedo realizar actualmente:"
 
-  utter_dont_understand:
-  - text: "Creo que no te he entendido. Podrías repetirme qué quieres que haga?"
+  utter_out_of_scope:
+  - text: "Lo siento, no puedo hacer eso"
+
+  utter_rephrase:
+  - text: "Lo siento, creo que no te he entendido. Me lo podrías repetir?"
 
   utter_goodbye:
   - text: "Hasta pronto!"
@@ -48,7 +69,11 @@ responses:
 # cumstom actions
 actions:
   - action_ver_asignaturas
+  - action_lista_acciones
   - action_usuario_existe
+  - action_guardar_nombre_usuario
+  - action_lista_asignaturas_registrado
+  - action_registrar_asignatura
 
 
 session_config:
