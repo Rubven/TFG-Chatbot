@@ -114,11 +114,11 @@ class ActionUsuarioExiste(Action):
 			mycursor.execute(q)
 			result = mycursor.fetchall()
 			mycursor.reset()
-			return[SlotSet("usuario_existe", True), SlotSet("nombre_usuario", result[0][0])]
+			return[SlotSet("usuario_existe", 1.0), SlotSet("nombre_usuario", result[0][0])]
 
 		else:
 			#return[SlotSet("usuario_existe", False), FollowupAction("utter_introduce")]
-			return[SlotSet("usuario_existe", False)]
+			return[SlotSet("usuario_existe", 0.0)]
 
 
 class ActionGuardarNombreUsuario(Action):
@@ -152,10 +152,10 @@ class ActionListaAsignaturasRegistrado(Action):
 		uid = tracker.sender_id	
 		
 		q = ("""SELECT nombre 
-				FROM asignatura, usuario, usuario-asignatura 
-				WHERE asignatura.id = usuario-asignatura.asignatura_id
+				FROM asignatura, usuario, usuario_asignatura 
+				WHERE asignatura.id = usuario_asignatura.asignatura_id
 				AND asignatura.curso='2020-2021'
-				AND usuario.id = usuario-asignatura.usuario_id 
+				AND usuario.id = usuario_asignatura.usuario_id 
 				AND usuario.id = '{}'""".format(uid))
 		
 		mycursor.execute(q)
