@@ -80,7 +80,7 @@ class ActionListaAcciones(Action):
 			'Ver asignaturas',
 			'Registrar usuario',
 			'Registrar usuario en asignatura (desarrollo -> botones)',
-			'Consultar horario asignatura (desarrollo -> botones)'
+			'Consultar horario asignatura (desarrollo -> botones)',
 			
 		]
 
@@ -140,6 +140,7 @@ class ActionGuardarNombreUsuario(Action):
 
 		return []
 
+
 class ActionListaAsignaturasRegistrado(Action):
 	def name(self) -> Text:
 		return "action_lista_asignaturas_registrado"
@@ -154,7 +155,6 @@ class ActionListaAsignaturasRegistrado(Action):
 		q = ("""SELECT nombre 
 				FROM asignatura, usuario, usuario_asignatura 
 				WHERE asignatura.id = usuario_asignatura.asignatura_id
-				AND asignatura.curso='2020-2021'
 				AND usuario.id = usuario_asignatura.usuario_id 
 				AND usuario.id = '{}'""".format(uid))
 		
@@ -166,3 +166,34 @@ class ActionListaAsignaturasRegistrado(Action):
 		mycursor.reset()
 
 		return []
+
+
+class ActionListaAsignaturasAnyo(Action):
+	def name(self) -> Text:
+		return "action_lista_asignaturas_anyo"
+		
+	def run(self,
+			dispatcher: CollectingDispatcher,
+			tracker: Tracker,
+			domain):
+			
+		anyo = tracker.get_slot('anyo')	
+		print('Año: '+str(anyo))
+		q = ("""SELECT nombre 
+				FROM asignatura
+				WHERE asignatura.anyo LIKE '%{}%';""".format(anyo))
+		
+		mycursor.execute(q)
+		result = mycursor.fetchall()
+
+		if len(result) == 0:
+			dispatcher.utter_message("No hay asignaturas de ese año")
+
+		else:
+			dispatcher.utter_message("Asignaturas año {}:".format(anyo))
+			for item in result:
+				dispatcher.utter_message(item[0])
+				print(item[0])
+		mycursor.reset()
+
+		# return []

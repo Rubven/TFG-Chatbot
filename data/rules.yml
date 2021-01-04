@@ -31,4 +31,13 @@ rules:
   steps:
   - intent: lista_acciones
   - action: utter_action_list
-  - action: action_lista_acciones 
+  - action: action_lista_acciones
+  - action: utter_ask_for_instructions
+
+# Mostrar asignaturas del año
+# - rule: Mostrar asignaturas
+#   steps:
+#   - intent: escoger_anyo
+#   - slot_was_set:
+#     - anyo
+#   - action: action_lista_asignaturas_anyo

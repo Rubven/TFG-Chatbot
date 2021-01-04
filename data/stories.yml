@@ -2,20 +2,21 @@ version: "2.0"
 
 stories:
 # Lista asignaturas
-- story: lista asignaturas
-  steps:
-  - intent: lista_asignaturas
-  - action: action_ver_asignaturas
-  - action: utter_ask_for_instructions
+# - story: lista asignaturas
+#   steps:
+#   - intent: lista_asignaturas
+#   - action: action_ver_asignaturas
+#   - action: utter_ask_for_instructions
 
 
 # Lista acciones
-- story: lista acciones
-  steps:
-  - intent: lista_acciones
-  - action: utter_action_list
-  - action: action_lista_acciones
-  - action: utter_ask_for_instructions
+# - story: lista acciones
+#   steps:
+#   - intent: lista_acciones
+#   - action: utter_action_list
+#   - action: action_lista_acciones
+#   - action: utter_ask_for_instructions
+
 
 # Saludo (inicio flujo)
 # - story: saludar usuario
@@ -54,6 +55,20 @@ stories:
     - usuario_existe: 1.0
   - action: utter_greet_user
   - action: utter_ask_for_instructions
+
+
+# Enseñar asignaturas de un año concreto
+- story: anyo asignaturas form
+  steps:
+  - intent: lista_asignaturas
+  - action: utter_ask_anyo
+  - intent: escoger_anyo
+  - slot_was_set:
+    - anyo
+  - action: action_lista_asignaturas_anyo
+  - action: utter_ask_for_instructions
+
+
 
 
 # Horarios asignaturas

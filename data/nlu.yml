@@ -86,3 +86,15 @@ nlu:
     - lista de películas
     - lista de precios móbiles
     - quiero un té
+
+- intent: escoger_anyo
+  examples: |
+    - Primero(anyo)
+    - 1(anyo)
+    - 2(anyo)
+    - 3(anyo)
+    - 4(anyo)
+    - "1"(anyo)
+    - "2"(anyo)
+    - "3"(anyo)
+    - "4"(anyo)

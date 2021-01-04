@@ -10,12 +10,14 @@ intents:
   - out_of_scope
   - lista_acciones
   - lista_asignaturas
+  - escoger_anyo
 
 # obtenidas con la NLU Pipeline
 entities:
   - nombre_usuario
   - asignatura
   - user_id
+  - anyo
 
 # memoria del bot
 slots:
@@ -28,13 +30,12 @@ slots:
   usuario_existe:
     type: bool
     influence_conversation: true
+  anyo:
+    type: text
+    influence_conversation: true
+
 
 # formularios
-# forms:
-#   user_name_form:
-#     nombre_usuario:
-#     - type: from_entity
-#       entity: nombre_usuario
 
 
 # respuestas
@@ -53,6 +54,21 @@ responses:
 
   utter_ask_for_instructions:
   - text: "En qué puedo ayudarte?"
+  - text: "Qué quieres hacer?"
+  - text: "Cuál es tu siguiente instrucción?"
+
+  utter_ask_anyo:
+  - text: "De qué año quieres verlas?"
+    buttons:
+    - title: "Primero"
+      payload: /escoger_anyo{{"anyo":1}}
+    - title: "Segundo"
+      payload: /escoger_anyo{{"anyo":2}}
+    - title: "Tercero"
+      payload: /escoger_anyo{{"anyo":3}}
+    - title: "Cuarto"
+      payload: /escoger_anyo{{"anyo":4}}
+
 
   utter_action_list:
   - text: "Aquí tienes una lista de las acciones que puedo realizar actualmente:"
@@ -66,12 +82,14 @@ responses:
   utter_goodbye:
   - text: "Hasta pronto!"
 
+
 # cumstom actions
 actions:
   - action_ver_asignaturas
   - action_lista_acciones
   - action_usuario_existe
   - action_guardar_nombre_usuario
+  - action_lista_asignaturas_anyo
   - action_lista_asignaturas_registrado
   - action_registrar_asignatura
 
