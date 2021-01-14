@@ -11,6 +11,8 @@ intents:
   - lista_acciones
   - lista_asignaturas
   - escoger_anyo
+  - registrar_asignatura
+  - registrar_asignatura_codigo
 
 # obtenidas con la NLU Pipeline
 entities:
@@ -18,19 +20,36 @@ entities:
   - asignatura
   - user_id
   - anyo
+  - usuario_registrado_asignatura
+  - asignatura_codigo
 
 # memoria del bot
 slots:
   nombre_usuario:
     type: text
     influence_conversation: true
+
   user_id:
     type: text  
-    influence_conversation: true
+    # influence_conversation: true
+
   usuario_existe:
     type: bool
-    influence_conversation: true
+    # influence_conversation: true
+
+  # usuario_no_existe:
+  #   type: bool
+  #   influence_conversation: true
+
   anyo:
+    type: text
+    # influence_conversation: true
+
+  usuario_registrado_asignatura:
+    type: bool
+    # influence_conversation: true
+
+  asignatura_codigo:
     type: text
     influence_conversation: true
 
@@ -58,7 +77,7 @@ responses:
   - text: "Cuál es tu siguiente instrucción?"
 
   utter_ask_anyo:
-  - text: "De qué año quieres verlas?"
+  - text: "De qué año?"
     buttons:
     - title: "Primero"
       payload: /escoger_anyo{{"anyo":1}}
@@ -90,8 +109,9 @@ actions:
   - action_usuario_existe
   - action_guardar_nombre_usuario
   - action_lista_asignaturas_anyo
+  - action_lista_asignaturas_anyo_button
   - action_lista_asignaturas_registrado
-  - action_registrar_asignatura
+  - action_registrar_asignatura_codigo
 
 
 session_config:

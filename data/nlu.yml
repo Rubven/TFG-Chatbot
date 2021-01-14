@@ -98,3 +98,11 @@ nlu:
     - "2"(anyo)
     - "3"(anyo)
     - "4"(anyo)
+
+- intent: registrar_asignatura
+  examples: |
+    - Quiero registrarme en una asignatura
+    - Registrar asignatura
+    - Apuntar asignatura
+    - Apuntarme a una asignatura
+    - Formar parte de una asignatura

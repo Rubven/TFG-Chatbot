@@ -32,6 +32,7 @@ from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import SlotSet, FollowupAction
+import json
 
 import mysql.connector
 mydb = mysql.connector.connect(
@@ -61,7 +62,7 @@ class ActionVerAsignaturas(Action):
 			dispatcher.utter_message(item[0])
 		mycursor.reset()
 
-		return []
+		# return []
 
 
 class ActionListaAcciones(Action):
@@ -86,7 +87,8 @@ class ActionListaAcciones(Action):
 
 		for accion in acciones:
 			dispatcher.utter_message(accion)
-		return []
+
+		# return []
 
 
 class ActionUsuarioExiste(Action):
@@ -115,12 +117,15 @@ class ActionUsuarioExiste(Action):
 			result = mycursor.fetchall()
 			mycursor.reset()
 			return[SlotSet("usuario_existe", 1.0), SlotSet("nombre_usuario", result[0][0])]
+			# return[SlotSet('usuario_existe', True), SlotSet("nombre_usuario", result[0][0])]
 
 		else:
 			#return[SlotSet("usuario_existe", False), FollowupAction("utter_introduce")]
 			return[SlotSet("usuario_existe", 0.0)]
+			# return[SlotSet('usuario_existe', False)]
 
 
+# TODO: añadir control de errores, si el nombre es None, poner intent a introduce y enviar mensaje pidiendo nombre
 class ActionGuardarNombreUsuario(Action):
 	def name(self) -> Text:
 		return "action_guardar_nombre_usuario"
@@ -138,7 +143,7 @@ class ActionGuardarNombreUsuario(Action):
 		mydb.commit()
 		mycursor.reset()
 
-		return []
+		# return []
 
 
 class ActionListaAsignaturasRegistrado(Action):
@@ -165,7 +170,7 @@ class ActionListaAsignaturasRegistrado(Action):
 			dispatcher.utter_message(item[0])
 		mycursor.reset()
 
-		return []
+		# return []
 
 
 class ActionListaAsignaturasAnyo(Action):
@@ -193,7 +198,72 @@ class ActionListaAsignaturasAnyo(Action):
 			dispatcher.utter_message("Asignaturas año {}:".format(anyo))
 			for item in result:
 				dispatcher.utter_message(item[0])
-				print(item[0])
+
 		mycursor.reset()
+
+		# return []
+
+
+class ActionListaAsignaturasAnyoButton(Action):
+	def name(self) -> Text:
+		return "action_lista_asignaturas_anyo_button"
+		
+	def run(self,
+			dispatcher: CollectingDispatcher,
+			tracker: Tracker,
+			domain):
+			
+		anyo = tracker.get_slot('anyo')	
+
+		q = ("""SELECT nombre, codigo 
+				FROM asignatura
+				WHERE asignatura.anyo LIKE '%{}%';""".format(anyo))
+		
+		mycursor.execute(q)
+		result = mycursor.fetchall()
+
+		if len(result) == 0:
+			dispatcher.utter_message("No hay asignaturas de ese año")
+
+		else:
+			# dispatcher.utter_message("Asignaturas año {}:".format(anyo))
+
+			mybuttons = []
+
+			for item in result:
+				# formato: [{'title': title_name, 'payload': '/intent{slotname: slotvalue}'}, ...]
+				slotname={ "asignatura_codigo": item[1]}
+				json_slotname = json.dumps(slotname)
+				button={"title":item[0], "payload":"/registrar_asignatura_codigo{}".format(json_slotname)}
+				# button={"title":item[0], "payload": """/registrar_asignatura{"""+"""{slot}}""".format(slot=slotname)}
+				# button={"title":item[0], "payload": """/registrar_asignatura{""""{slot}"+""":{name}}""".format(slot=slotname, name = item[1])}
+				mybuttons.append(button)
+
+			dispatcher.utter_message("Asignaturas año {}:".format(anyo), buttons= mybuttons)
+			
+		mycursor.reset()
+
+		# return []
+
+
+class ActionRegistrarAsignaturaCodigo(Action):
+	def name(self) -> Text:
+		return "action_registrar_asignatura_codigo"
+		
+	def run(self,
+			dispatcher: CollectingDispatcher,
+			tracker: Tracker,
+			domain):
+			
+		uid = tracker.sender_id
+		codigo = tracker.get_slot('asignatura_codigo')
+		
+		q = ("""INSERT INTO usuario_asignatura (usuario_id, asignatura_codigo)
+				VALUES ('{uid}','{codigo}')""".format(uid=uid, codigo=codigo))
+		
+		mycursor.execute(q)	
+		mydb.commit()
+		mycursor.reset()
+		dispatcher.utter_message("Registrado")
 
 		# return []

@@ -1,82 +1,45 @@
 version: "2.0"
 
 stories:
-# Lista asignaturas
-# - story: lista asignaturas
-#   steps:
-#   - intent: lista_asignaturas
-#   - action: action_ver_asignaturas
-#   - action: utter_ask_for_instructions
 
-
-# Lista acciones
-# - story: lista acciones
-#   steps:
-#   - intent: lista_acciones
-#   - action: utter_action_list
-#   - action: action_lista_acciones
-#   - action: utter_ask_for_instructions
-
-
-# Saludo (inicio flujo)
-# - story: saludar usuario
-#   steps:
-#   - intent: greet
-#   - action: action_usuario_existe
-#   - checkpoint: check_usuario_existe
-
-
-# Saludar usuario nuevo, pedir nombre y registrar
-- story: saludar usuario nuevo y añadir BD
+- story: saludar usuario
   steps:
   - intent: greet
   - action: action_usuario_existe
-  # - checkpoint: check_usuario_existe
+  - checkpoint: check_usuario_existe
+
+- story: saludar usuario nuevo y añadir BD
+  steps:
+  - checkpoint: check_usuario_existe
   - slot_was_set:
-    - usuario_existe: 0.0
+    - usuario_existe: false
   - action: utter_introduce
   - action: utter_ask_name
   - intent: introduce
     entities:
     - nombre_usuario
-  # - action: user_name_form
   - action: action_guardar_nombre_usuario
   - action: utter_user_registered
   - action: utter_ask_for_instructions
 
-
-# Saludar usuario existente por su nombre y pedir instrucciones
 - story: saludar usuario existente
   steps:
-  - intent: greet
-  - action: action_usuario_existe
-  # - checkpoint: check_usuario_existe
+  - checkpoint: check_usuario_existe
   - slot_was_set:
-    - usuario_existe: 1.0
+    - usuario_existe: true
   - action: utter_greet_user
   - action: utter_ask_for_instructions
 
-
-# Enseñar asignaturas de un año concreto
-- story: anyo asignaturas form
+- story: registrarse en asignaturas
   steps:
-  - intent: lista_asignaturas
+  - intent: registrar_asignatura
   - action: utter_ask_anyo
   - intent: escoger_anyo
   - slot_was_set:
     - anyo
-  - action: action_lista_asignaturas_anyo
+  - action: action_lista_asignaturas_anyo_button
+  - intent: registrar_asignatura_codigo
+  # - slot_was_set:
+  #   - asignatura_codigo
+  - action: action_registrar_asignatura_codigo
   - action: utter_ask_for_instructions
-
-
-
-
-# Horarios asignaturas
-
-
-
-# Registrarse en asignaturas
-
-
-
-# Out-of-scope

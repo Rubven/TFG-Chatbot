@@ -7,6 +7,7 @@ rules:
 #   steps:
 #   - intent: greet
 #   - action: action_usuario_existe
+#   - checkpoint: check_usuario_existe
 
 # Despedirse del usuario cuando diga adiós
 - rule: Say goodbye anytime the user says goodbye
