@@ -1,0 +1,405 @@
+// question: 7905  name: visio13_1A-1
+::visio13_1A-1::[html]<p>Sobre los receptores en el ojo humano,<br></p>{
+	~%-25%<p>los bastones son sensibles a alta intensidad, al color y están en la periferia de la fóvea.<br></p>
+	~%-25%<p>los bastones son sensibles a baja intensidad, al color y están en la fóvea.<br></p>
+	~%-25%<p>los conos son sensibles la baja intensidad, al color y están en la periferia de la fóvea.<br></p>
+	=<p>los conos son sensibles a alta intensidad, al color y están básicamente en la fóvea.<br></p>
+}
+
+
+// question: 7906  name: visio13_1A-2
+::visio13_1A-2::[html]<p>Dónde se genera la imagen de los puntos del infinito para un objetivo de focal F.<br></p>{
+	=<p>en el plano focal imagen.<br></p>
+	~%-25%<p>en el centro del objetivo.<br></p>
+	~%-25%<p>en menos infinito.<br></p>
+	~%-25%<p>depende de la apertura.<br></p>
+}
+
+
+// question: 7907  name: visio13_1A-3
+::visio13_1A-3::[html]<p>Cuál de estas cantidades no influye en el cálculo del campo de vista (FOV).<br></p>{
+	~%-25%<p>Tamaño del sensor.<br></p>
+	~%-25%<p>Distancia focal.<br></p>
+	=<p>Apertura relativa.<br></p>
+	~%-25%<p>Distancia de trabajo.<br></p>
+}
+
+
+// question: 7908  name: visio13_1A-4
+::visio13_1A-4::[html]<p>Con el uso de extensores cuál de estas cantidades se incrementa.<br></p>{
+	=<p>Aumento.<br></p>
+	~%-25%<p>Profundidad de campo (DOF).<br></p>
+	~%-25%<p>Distancia mínima de trabajo (MOD).<br></p>
+	~%-25%<p>Campo de vista (FOV).<br></p>
+}
+
+
+// question: 7909  name: visio13_1A-5
+::visio13_1A-5::[html]<p>En un sistema de inspección queremos cambiar la cámara (sensor) para obtener mayor resolución, sin cambiar el resto de cosas (el campo que vemos, las distancias, objetivo, enfoque, focal, ...). Qué debemos hacer\:<br></p>{
+	~%-25%<p>aumentar el tamaño del sensor y mantener el número de píxeles (mismas filas y columnas).<br></p>
+	~%-25%<p>aumentar el tamaño del sensor y aumentar el número de píxeles (más filas y columnas).<br></p>
+	~%-25%<p>mantener el tamaño del sensor y disminuir el número de píxeles (menos filas y columnas).<br></p>
+	=<p>mantener el tamaño del sensor y aumentar el número de píxeles (más filas y columnas).<br></p>
+}
+
+
+// question: 7910  name: visio13_1A-6
+::visio13_1A-6::[html]<p>Qué decisión tomaremos al elegir una cámara (sensor) para resolver un problema con objetos muy rápidos en un entorno con poca luz.<br></p>{
+	=<p>Frame shutter con píxeles grandes.<br></p>
+	~%-25%<p>Frame shutter con píxeles pequeños.<br></p>
+	~%-25%<p>Rolling shutter con píxeles grandes.<br></p>
+	~%-25%<p>Rolling shutter con píxeles pequeños.<br></p>
+}
+
+
+// question: 7911  name: visio13_1A-7
+::visio13_1A-7::[html]<p>Sobre la sensibilidad de los sensores de Silicio (Si) respecto a la del sistema visual humano (SVH).<br></p>{
+	~%-25%<p>Los sensores de Si cubren más rango sólo en el infrarrojo.<br></p>
+	~%-25%<p>Los sensores de Si cubren más rango sólo en el ultravioleta.<br></p>
+	=<p>Los sensores de Si cubren más rango espectral que el SVH.<br></p>
+	~%-25%<p>Los sensores de Si cubren menos rango espectral que el SVH.<br></p>
+}
+
+
+// question: 7912  name: visio14_1A-1
+::visio14_1A-1::[html]<p>Cuál de estos colores necesita más de una longitud de onda para generarlo.<br></p>{
+	~%-25%<p>Rojo.<br></p>
+	~%-25%<p>Cian.<br></p>
+	=<p>Magenta.<br></p>
+	~%-25%<p>Amarillo.<br></p>
+}
+
+
+// question: 7913  name: visio14_1A-13
+::visio14_1A-13::[html]<p>Cuáles son los límites (aproximados) del espectro de luz visible.<br></p>{
+	=<p>de 400 nm a 700 nm.<br></p>
+	~%-25%<p>de 380 nm a 1100 nm.<br></p>
+	~%-25%<p>de 400 \\(\\mu\\)m a 700 \\(\\mu\\)m.<br></p>
+	~%-25%<p>de 380 \\(\\mu\\)m a 1100 \\(\\mu\\)m.<br></p>
+}
+
+
+// question: 7914  name: visio14_1A-2
+::visio14_1A-2::[html]<p>Cuál está ordenada de menor a mayor energía\:<br></p>{
+	~%-25%<p>Rayos X, Ultravioleta, Visible, Infrarrojo, Microondas.<br></p>
+	=<p>Microondas, Infrarrojo, Visible, Ultravioleta, Rayos X.<br></p>
+	~%-25%<p>Microondas, Ultravioleta, Visible, Infrarrojo, Rayos X.<br></p>
+	~%-25%<p>Rayos X, Infrarrojo, Visible, Ultravioleta, Microondas.<br></p>
+}
+
+
+// question: 7915  name: visio14_1A-3
+::visio14_1A-3::[html]<p>La zona del ojo donde encontramos una mayor concentración de conos es<br></p>{
+	~%-25%<p>la retina.<br></p>
+	~%-25%<p>el nervio óptico.<br></p>
+	=<p>la fóvea.<br></p>
+	~%-25%<p>el punto ciego.<br></p>
+}
+
+
+// question: 7916  name: visio14_1A-4
+::visio14_1A-4::[html]<p>La colorimetría establece que cualquier color lo podemos poner en función de otros tres colores únicamente si<br></p>{
+	~%-25%<p>se trata del rojo, verde y azul.<br></p>
+	~%-25%<p>estos colores existen en la naturaleza, por tanto si se trata de colores reales.<br></p>
+	~%-25%<p>se trata de colores imaginarios que no existen en la naturaleza.<br></p>
+	=<p>si constituyen tres primarios independientes entre sí, ya sean reales o imaginarios.<br></p>
+}
+
+
+// question: 7917  name: visio14_1A-5
+::visio14_1A-5::[html]<p>Los rayos que pasan por el centro de una lente delgada<br></p>{
+	=<p>no se desvían.<br></p>
+	~%-25%<p>se desvían por el punto focal imagen.<br></p>
+	~%-25%<p>se desvían por el punto focal objeto.<br></p>
+	~%-25%<p>continuan paralelos al eje óptico.<br></p>
+}
+
+
+// question: 7918  name: visio14_1A-6
+::visio14_1A-6::[html]<p>Qué mínima distancia al objeto podemos tener para un sistema de focal 8 mm si enfocamos como máximo a 4 mm por detrás del plano focal.<br></p>{
+	~%-25%<p>4.8 mm<br></p>
+	~%-25%<p>48 mm<br></p>
+	=<p>24 mm<br></p>
+	~%-25%<p>2.4 mm<br></p>
+}
+
+
+// question: 7919  name: visio14_1A-7
+::visio14_1A-7::[html]<p>Una persona con una miopía leve sin gafas ve mejor, más nítidamente, a plena luz del día que en condiciones de poca luz porque<br></p>{
+	=<p>la pupila se contrae y aumenta la profundidad de campo.<br></p>
+	~%-25%<p>el calor deforma el globo ocular y corrige la deformación.<br></p>
+	~%-25%<p>los bastones empiezan a trabajar y tenemos más resolución con ellos.<br></p>
+	~%-25%<p>cuantos más fotones más señal se tiene, y por tanto menos borrosa.<br></p>
+}
+
+
+// question: 7920  name: visio14_1A-8
+::visio14_1A-8::[html]<p>Cuál es la principal razón para hacer sensores de silicio para cámaras que van a trabajar en el visible.<br></p>{
+	~%-25%<p>El silicio es un material abundante en la tierra.<br></p>
+	=<p>El silicio tiene un gap de 1.1eV lo que le confiere una sensibilidad adecuada para este fin.<br></p>
+	~%-25%<p>El silicio es el material con el que se fabrica la mayor parte de la electrónica que nos rodea.<br></p>
+	~%-25%<p>Se han desarrollado procesos de fabricación muy baratos para la electrónica basada en el silicio.<br></p>
+}
+
+
+// question: 7921  name: visio15_1A-1
+::visio15_1A-1::[html]<p>El gap del silicio es de 1.11eV (salto energético entre banda de valencia y de conducción). Para un sensor basado en silicio el gap <br></p>{
+	=<p>está relacionado con que la mayor longitud de onda a la que es sensible caiga dentro del NIR.<br></p>
+	~%-25%<p>está relacionado con que la menor longitud de onda a la que es sensible caiga dentro del UV.<br></p>
+	~%-25%<p>define el ancho de la sensibilidad espectral del sensor por ambos lados.<br></p>
+	~%-25%<p>define la forma que tendrá la curva de sensibilidad.<br></p>
+}
+
+
+// question: 7922  name: visio15_1A-2
+::visio15_1A-2::[html]<p>Si analizamos la luz de color azul que proviene del cielo veríamos que<br></p>{
+	=<p>hay más energía en la zona cercana a los 400 nm.<br></p>
+	~%-25%<p>hay más energía en la zona cercana a los 500 nm.<br></p>
+	~%-25%<p>hay más energía en la zona cercana a los 700 nm.<br></p>
+	~%-25%<p>es monocromática (una única longitud de onda) centrada en el azul. <br></p>
+}
+
+
+// question: 7923  name: visio15_1A-3
+::visio15_1A-3::[html]<p>Si hacemos una semejanza entre una cámara y un ojo, cuál de estos elementos haría las veces de sensor\:<br></p>{
+	~%-25%<p>córnea<br></p>
+	~%-25%<p>cristalino<br></p>
+	=<p>retina<br></p>
+	~%-25%<p>nervio óptico<br></p>
+}
+
+
+// question: 7924  name: visio15_1A-4
+::visio15_1A-4::[html]<p>Sobre el espacio de color XYZ. <br></p>{
+	~%-25%<p>Sus ejes se emparejan directamente con el R, G y B. Se usa otro nombre para distinguir que se trata de un espacio invariante a dispositivo<br></p>
+	=<p>Los colores en los ejes son colores que no se pueden dar en la naturaleza.<br></p>
+	~%-25%<p>Es una derivación del espacio CIELab<br></p>
+	~%-25%<p>El origen está situado en el centro del sólido de color.<br></p>
+}
+
+
+// question: 7925  name: visio15_1A-5
+::visio15_1A-5::[html]<p>En una aplicación queremos seleccionar con un threshold aquellos puntos de la imagen que tengan colores muy puros. Qué espacio de color será el más adecuado.<br></p>{
+	~%-25%<p>RGB<br></p>
+	~%-25%<p>CMY<br></p>
+	~%-25%<p>YUV<br></p>
+	=<p>HSV<br></p>
+}
+
+
+// question: 7926  name: visio15_1A-6
+::visio15_1A-6::[html]<p>Con una cámara, sin alterar el enfoque ni la focal, tomamos diferentes vistas de una escena cambiando sólo la posición. Cuál de las matrices del modelo de proyección de una cámara pinhole se cambiará.<br></p>{
+	~%-25%<p>Matriz de parámetros intrínsecos<br></p>
+	=<p>Matriz de parámetros extrínsecos<br></p>
+	~%-25%<p>Las dos matrices<br></p>
+	~%-25%<p>Ninguna de las dos<br></p>
+}
+
+
+// question: 7927  name: visio15_1A-7
+::visio15_1A-7::[html]<p>Queremos estudiar unas estrellas con un telescopio al que hemos añadido una cámara sin lentes. Si el telescopio hace de objetivo dónde situaremos el sensor de la cámara.<br></p>{
+	=<p>en la focal del sistema.<br></p>
+	~%-25%<p>en el centro óptico del sistema.<br></p>
+	~%-25%<p>donde queramos.<br></p>
+	~%-25%<p>dependerá del diámetro de las lentes del telescopio<br></p>
+}
+
+
+// question: 7928  name: visio15_1A-8
+::visio15_1A-8::[html]<p>Por qué hay menos píxeles captando luz que el total de píxeles que tiene el sensor.<br></p>{
+	~%-25%<p>Para ahorrar costes ya que pueden vender diferentes modelos capándolos por software.<br></p>
+	~%-25%<p>Para compensar los hot pixels y los dead píxeles, los píxeles defectuosos.<br></p>
+	=<p>Para estimar la corriente oscura debida a la temperatura.<br></p>
+	~%-25%<p>Para centrar la zona del sensor expuesta respecto del eje óptico de forma sencilla.<br></p>
+}
+
+
+// question: 7929  name: visio15_1A-9
+::visio15_1A-9::[html]<p>Qué tecnologías presentan estos dos efectos en mayor medida\: (1) Rolling shutter, (2) Blooming.<br></p>{
+	~%-25%<p>(1) CCD,  (2) CCD<br></p>
+	~%-25%<p>(1) CCD,  (2) CMOS<br></p>
+	~%-25%<p>(1) CMOS, (2) CMOS<br></p>
+	=<p>(1) CMOS, (2) CCD<br></p>
+}
+
+
+// question: 7930  name: visio16_1A-1
+::visio16_1A-1::[html]<p>Qué secuencia está ordenada de menor a mayor energía\:<br></p>{
+	~%-25%<p>Rayos \\(\\gamma\\), Ultravioleta, 500 nm, Radio.<br></p>
+	~%-25%<p>Rayos \\(\\gamma\\), Infrarrojo, 350 nm, Radio.<br></p>
+	=<p>Radio, 1.3 \\(\\mu\\)m, Ultravioleta, Rayos \\(\\gamma\\).<br></p>
+	~%-25%<p>Radio, Ultravioleta, 700 nm,  Rayos \\(\\gamma\\).<br></p>
+}
+
+
+// question: 7931  name: visio16_1A-2
+::visio16_1A-2::[html]<p>Cuál de estos parámetros espectrales está ligado en mayor medida al parámetro "tono" que usaríamos para describir un color.<br></p>{
+	~%-25%<p>Luminancia<br></p>
+	=<p>Longitud de onda dominante<br></p>
+	~%-25%<p>Saturación<br></p>
+	~%-25%<p>Pureza<br></p>
+}
+
+
+// question: 7932  name: visio16_1A-4
+::visio16_1A-4::[html]<p>Qué tecnologías se caracterizan en mayor medida por (1) Frame shutter, (2) Windowing.<br></p>{
+	~%-25%<p>(1) CCD,  (2) CCD<br></p>
+	=<p>(1) CCD,  (2) CMOS<br></p>
+	~%-25%<p>(1) CMOS, (2) CMOS<br></p>
+	~%-25%<p>(1) CMOS, (2) CCD<br></p>
+}
+
+
+// question: 7933  name: visio17_1A-1
+::visio17_1A-1::[html]<p>Qué secuencia está ordenada de mayor a menor frecuencia\:<br></p>{
+	~%-25%<p>Rayos X, 500 nm, Ultravioleta, Microondas.<br></p>
+	~%-25%<p>Radio, 1,3 \\(\\mu\\)m, Ultravioleta, Rayos \\(\\gamma\\).<br></p>
+	=<p>Ultravioleta, 700 nm, Infrarrojo, Radio.<br></p>
+	~%-25%<p>Rayos \\(\\gamma\\), Visible, 350 nm, Radio.<br></p>
+}
+
+
+// question: 7934  name: visio17_1A-2
+::visio17_1A-2::[html]<p>Cuál de estos colores no aparecería en la descomposición de la luz blanca (arco iris), asumiendo colores saturados.<br></p>{
+	~%-25%<p>Cian<br></p>
+	=<p>Magenta<br></p>
+	~%-25%<p>Amarillo<br></p>
+	~%-25%<p>Naranja<br></p>
+}
+
+
+// question: 7935  name: visio17_1A-3
+::visio17_1A-3::[html]<p>Las zonas de la retina donde no encontramos o encontramos pocos bastones son.<br></p>{
+	~%-25%<p>únicamente la fóvea.<br></p>
+	~%-25%<p>únicamente el punto ciego.<br></p>
+	=<p>la fóvea y el punto ciego.<br></p>
+	~%-25%<p>Ninguna, la distribución de bastones es bastante uniforme en toda la retina.<br></p>
+}
+
+
+// question: 7936  name: visio17_1A-4
+::visio17_1A-4::[html]<p>Qué tecnologías de sensor se caracterizan en mayor medida por (1) Rolling shutter, (2) Alta velocidad.<br></p>{
+	~%-25%<p>(1) CCD,  (2) CCD<br></p>
+	~%-25%<p>(1) CCD,  (2) CMOS<br></p>
+	=<p>(1) CMOS, (2) CMOS<br></p>
+	~%-25%<p>(1) CMOS, (2) CCD<br></p>
+}
+
+
+// question: 7937  name: visio17_1A-5
+::visio17_1A-5::[html]<p>Cuál de estas afirmaciones es verdadera sobre la corriente oscura en un sensor.<br></p>{
+	~%-25%<p>En ausencia de luz desaparece.<br></p>
+	~%-25%<p>Genera un patrón de ruido impulsional típico llamado salt and pepper.<br></p>
+	~%-25%<p>Los píxeles efectivos se usan para cuantificarla.<br></p>
+	=<p>Se puede disminuir su efecto bajando la temperatura.<br></p>
+}
+
+
+// question: 7938  name: visio17_1A-6
+::visio17_1A-6::[html]<p>Para una lente convergente de focal F, a qué distancia se genera la imagen de un punto situado a 2F.<br></p>{
+	=<p>2F<br></p>
+	~%-25%<p>F<br></p>
+	~%-25%<p>\\(\\infty\\)<br></p>
+	~%-25%<p>0<br></p>
+}
+
+
+// question: 7939  name: visio18_1A-1
+::visio18_1A-1::[html]<p>En el espectro electromagnético se cumple que\:<br></p>{
+	~%-25%<p>a mayor energía, mayor longitud de onda.<br></p>
+	~%-25%<p>a menor energía, menor longitud de onda.<br></p>
+	~%-25%<p>a mayor frecuencia, mayor longitud de onda.<br></p>
+	=<p>a menor frecuencia, menor energía.<br></p>
+}
+
+
+// question: 7940  name: visio18_1A-2
+::visio18_1A-2::[html]<p>Cuál de estos emisores nos da un color más saturado\:<br></p>{
+	=<p>láser rojo monocromático<br></p>
+	~%-25%<p>led rojo con un ancho de banda de 40 nm<br></p>
+	~%-25%<p>fuente blanca cálida incandescente (luz anaranjada)<br></p>
+	~%-25%<p>fuente blanca fría de fluorescente (luz azulada)<br></p>
+}
+
+
+// question: 7941  name: visio18_1A-3
+::visio18_1A-3::[html]<p>Qué partes del ojo no estarían asociadas a las funciones que en una cámara encontramos en el sensor, el diafragma y parte del sistema óptico.<br></p>{
+	~%-25%<p>retina<br></p>
+	~%-25%<p>iris<br></p>
+	~%-25%<p>humor vítreo<br></p>
+	=<p>punto ciego<br></p>
+}
+
+
+// question: 7942  name: visio18_1A-4
+::visio18_1A-4::[html]<p>Qué tipo de sensor se caracterizan en mayor medida por (1) sensibilidad no lineal, (2) global shutter.<br></p>{
+	~%-25%<p>(1) CCD,  (2) CCD<br></p>
+	~%-25%<p>(1) CCD,  (2) CMOS<br></p>
+	~%-25%<p>(1) CMOS, (2) CMOS<br></p>
+	=<p>(1) CMOS, (2) CCD<br></p>
+}
+
+
+// question: 7943  name: visio18_1A-5
+::visio18_1A-5::[html]<p>Cuál de estas afirmaciones es verdadera sobre la corriente oscura en un sensor.<br></p>{
+	~%-25%<p>En presencia de luz desaparece.<br></p>
+	~%-25%<p>Genera un patrón de ruido impulsional<br></p>
+	=<p>Se tapan unos píxeles en los bordes del sensor para cuantificarla.<br></p>
+	~%-25%<p>Si enfriamos el sensor subimos su contribución en la señal.<br></p>
+}
+
+
+// question: 7944  name: visio19_1A-1
+::visio19_1A-1::[html]<p>Cuál de estas frecuencias para una onda electromagnética pertenece al espectro visible (puedes suponer que \\(c \= 300000\\,\\)km/s)\:<br></p>{
+	~%-25%<p>&nbsp;\\(5\\cdot 10^\{10\} \\) Hz.<br></p>
+	~%-25%<p>&nbsp;\\(5\\cdot 10^\{12\} \\) Hz.<br></p>
+	=<p>&nbsp;\\(5\\cdot 10^\{14\} \\) Hz.<br></p>
+	~%-25%<p>&nbsp;\\(5\\cdot 10^\{16\} \\) Hz.<br></p>
+}
+
+
+// question: 7945  name: visio19_1A-2
+::visio19_1A-2::[html]<p>Cuál de estas tripletas de conceptos o valores no definen un color\:<br></p>{
+	~%-25%<p>longitud de onda dominante, pureza, luminancia<br></p>
+	~%-25%<p>tono, saturación, luminosidad<br></p>
+	=<p>difuso, especular, ambiente<br></p>
+	~%-25%<p>R, G, B<br></p>
+}
+
+
+// question: 7946  name: visio19_1A-3
+::visio19_1A-3::[html]<p>Cuál de estas características definen a los bastones del ojo humano\:<br></p>{
+	~%-25%<p>sensibles a alta intensidad, no al color, situados principalmente en la fóvea<br></p>
+	~%-25%<p>sensibles a baja intensidad, al color, situados principalmente fuera de la fóvea<br></p>
+	~%-25%<p>sensibles a alta intensidad, al color, situados principalmente en la fóvea<br></p>
+	=<p>sensibles a baja intensidad, no al color, situados principalmente fuera de la fóvea<br></p>
+}
+
+
+// question: 7947  name: visio19_1A-4
+::visio19_1A-4::[html]<p>Qué tipo de sensor se caracterizan en mayor medida por (1) windowing (capacidad de capturar RoIs), (2) bajo ruido.<br></p>{
+	~%-25%<p>(1) CCD,  (2) CCD<br></p>
+	~%-25%<p>(1) CCD,  (2) CMOS<br></p>
+	~%-25%<p>(1) CMOS, (2) CMOS<br></p>
+	=<p>(1) CMOS, (2) CCD<br></p>
+}
+
+
+// question: 7948  name: visio19_1A-5
+::visio19_1A-5::[html]<p>En estas dos situaciones por qué shutter nos decantaremos\: a) escena estática para aplicación de bajo coste, b) escena de objetos en movimiento.<br></p>{
+	~%-25%<p>a) Rolling shutter, b) Rolling shutter<br></p>
+	=<p>a) Rolling shutter, b) Frame shutter<br></p>
+	~%-25%<p>a) Frame shutter, b) Rolling shutter<br></p>
+	~%-25%<p>a) Frame shutter, b) Frame shutter<br></p>
+}
+
+
+// question: 7949  name: visio19_1A-6
+::visio19_1A-6::[html]<p>Una cámara con píxeles de una micra y focal 10 mm captura, a una distancia de 1 m, objetos que se mueven delante de ella a 1 m/s. Qué tiempo de exposición necesitamos si queremos que el desenfoque por movimiento sea de 1 píxel.<br></p>{
+	~%-25%<p> \\(1\\) s<br></p>
+	=<p> \\( 10^\{-4\}  \\) s<br></p>
+	~%-25%<p>\\( 10^\{-6\}  \\) s<br></p>
+	~%-25%<p>\\( 10^\{-1\}  \\) s<br></p>
+}
+
+
