@@ -2,13 +2,6 @@ version: "2.0"
 
 rules:
 
-# Saludar y comprobar si usuario existe
-# - rule: Greet and check
-#   steps:
-#   - intent: greet
-#   - action: action_usuario_existe
-#   - checkpoint: check_usuario_existe
-
 # Despedirse del usuario cuando diga adiós
 - rule: Say goodbye anytime the user says goodbye
   steps:
@@ -35,10 +28,17 @@ rules:
   - action: action_lista_acciones
   - action: utter_ask_for_instructions
 
-# Mostrar asignaturas del año
-# - rule: Mostrar asignaturas
-#   steps:
-#   - intent: escoger_anyo
-#   - slot_was_set:
-#     - anyo
-#   - action: action_lista_asignaturas_anyo
+
+- rule: registrar usuario nuevo
+  condition:
+  - active_loop: nombre_usuario_form
+  steps:
+  - action: nombre_usuario_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  # - checkpoint: check_registrar_usuario
+  - action: action_guardar_nombre_usuario
+  - action: utter_user_registered
+  - action: utter_ask_for_instructions
+

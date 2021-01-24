@@ -10,22 +10,21 @@ pipeline:
   - name: SpacyTokenizer
   - name: SpacyFeaturizer
   - name: RegexFeaturizer
-  # - name: RegexEntityExtractor
   - name: LexicalSyntacticFeaturizer
   - name: CountVectorsFeaturizer
   # - name: CountVectorsFeaturizer
   #   analyzer: "char_wb"
   #   min_ngram: 1
   #   max_ngram: 4
-  - name: "SpacyEntityExtractor"
+  - name: SpacyEntityExtractor
     dimensions: ["PERSON"]
   - name: DIETClassifier
-    epochs: 100
+    # epochs: 100
   - name: EntitySynonymMapper
   - name: ResponseSelector
-    epochs: 100
+    # epochs: 100
   - name: FallbackClassifier
-    threshold: 0.3
+    threshold: 0.4
     ambiguity_threshold: 0.1
 
 # Configuration for Rasa Core.

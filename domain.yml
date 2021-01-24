@@ -13,6 +13,9 @@ intents:
   - escoger_anyo
   - registrar_asignatura
   - registrar_asignatura_codigo
+  - preguntas_asignatura
+  - preguntas_asignatura_codigo
+  - contestar_pregunta
 
 # obtenidas con la NLU Pipeline
 entities:
@@ -22,12 +25,14 @@ entities:
   - anyo
   - usuario_registrado_asignatura
   - asignatura_codigo
+  - mas_preguntas
+  - respuesta_correcta
 
 # memoria del bot
 slots:
   nombre_usuario:
     type: text
-    influence_conversation: true
+    # influence_conversation: true
 
   user_id:
     type: text  
@@ -36,10 +41,6 @@ slots:
   usuario_existe:
     type: bool
     # influence_conversation: true
-
-  # usuario_no_existe:
-  #   type: bool
-  #   influence_conversation: true
 
   anyo:
     type: text
@@ -53,8 +54,32 @@ slots:
     type: text
     influence_conversation: true
 
+  respuesta_correcta:
+    type: bool  
+
+  mas_preguntas:
+    type: bool
+
+  num_pregunta:
+    type: text
+
 
 # formularios
+forms:
+  nombre_usuario_form:
+    nombre_usuario:
+    - type: from_text
+      intent: introduce
+
+  mas_preguntas_form:
+    mas_preguntas:
+    - type: from_intent
+      value: false
+      intent: deny
+
+    - type: from_intent
+      value: true
+      intent: affirm
 
 
 # respuestas
@@ -66,9 +91,9 @@ responses:
   - text: "Hola, {nombre_usuario}!"
 
   utter_user_registered:
-  - text: "Encantado, {nombre_usuario}. Ya estás registrado"
+  - text: "Encantado, {nombre_usuario}. Ya te he registrado."
 
-  utter_ask_name:
+  utter_ask_nombre_usuario:
   - text: "Esta es la primera vez que hablamos. Cómo debería llamarte?"
 
   utter_ask_for_instructions:
@@ -77,7 +102,7 @@ responses:
   - text: "Cuál es tu siguiente instrucción?"
 
   utter_ask_anyo:
-  - text: "De qué año?"
+  - text: "De qué año es la asignatura a la que te quieres registrar?"
     buttons:
     - title: "Primero"
       payload: /escoger_anyo{{"anyo":1}}
@@ -87,7 +112,6 @@ responses:
       payload: /escoger_anyo{{"anyo":3}}
     - title: "Cuarto"
       payload: /escoger_anyo{{"anyo":4}}
-
 
   utter_action_list:
   - text: "Aquí tienes una lista de las acciones que puedo realizar actualmente:"
@@ -101,6 +125,9 @@ responses:
   utter_goodbye:
   - text: "Hasta pronto!"
 
+  utter_ask_mas_preguntas:
+  - text: "Quieres que te haga más preguntas?"
+
 
 # cumstom actions
 actions:
@@ -112,6 +139,9 @@ actions:
   - action_lista_asignaturas_anyo_button
   - action_lista_asignaturas_registrado
   - action_registrar_asignatura_codigo
+  - action_lista_asignaturas_preguntas
+  - action_preguntas_asignatura
+  - action_respuesta_correcta
 
 
 session_config:

@@ -2,7 +2,7 @@ import re
 import pprint
 
 # 1) Lectura ficheros
-tema1 = open("preguntes-VC2020-Tema 1 - Formació (entrenament)-20201001-1947.txt", "r", encoding='utf-8')
+tema1 = open("preguntes-VC2020-Tema 1 - Formacio (entrenament)-20201001-1947.txt", "r", encoding='utf-8')
 tema2 = open("preguntes-VC2020-Tema 2 - Processament (entrenament)-20201001-1951.txt", "r", encoding='utf-8')
 
 # 2) Función parseado
@@ -66,7 +66,11 @@ preguntasT2 = parser(tema2)
 # 4) Conectar a BD
 import pymongo
 client = pymongo.MongoClient("localhost", 27017)
+
+# crea DB si no existe
 mongodb = client["preguntas"]
+
+# crea coleccion si no existe
 collection = mongodb["102784"]
 
 # 5) Insertar preguntas en colecciones
@@ -76,19 +80,19 @@ collection = mongodb["102784"]
 #  "enunciado": "",
 #     "opciones": [
 #         {
-#             "option1": "1",
+#             "option": "1",
 #             "isCorrect": false
 #         },
 #         {
-#             "option2": "2",
+#             "option": "2",
 #             "isCorrect": true
 #         },
 #         {
-#             "option3": "3",
+#             "option": "3",
 #             "isCorrect": false
 #         },
 #         {
-#             "option3": "3",
+#             "option": "3",
 #             "isCorrect": false
 #         }
 #     ]
@@ -99,13 +103,13 @@ for pregunta in preguntasT1:
     p = {   "tema":"1", "numPregunta": pregunta['numero'], "enunciado": pregunta['enunciado'],
             "opciones":[
                 {   "isCorrect": pregunta['respuestas'][0][0],
-                    "opcion1": pregunta['respuestas'][0][1]},
+                    "opcion": pregunta['respuestas'][0][1]},
                 {   "isCorrect": pregunta['respuestas'][1][0],
-                    "opcion2": pregunta['respuestas'][1][1]},
+                    "opcion": pregunta['respuestas'][1][1]},
                 {   "isCorrect": pregunta['respuestas'][2][0],
-                    "opcion3": pregunta['respuestas'][2][1]},
+                    "opcion": pregunta['respuestas'][2][1]},
                 {   "isCorrect": pregunta['respuestas'][3][0],
-                    "opcion4": pregunta['respuestas'][3][1]},
+                    "opcion": pregunta['respuestas'][3][1]},
             ]}
 
     collection.insert_one(p)
@@ -116,13 +120,13 @@ for pregunta in preguntasT2:
     p = {   "tema":"2", "numPregunta": pregunta['numero'], "enunciado": pregunta['enunciado'],
             "opciones":[
                 {   "isCorrect": pregunta['respuestas'][0][0],
-                    "opcion1": pregunta['respuestas'][0][1]},
+                    "opcion": pregunta['respuestas'][0][1]},
                 {   "isCorrect": pregunta['respuestas'][1][0],
-                    "opcion2": pregunta['respuestas'][1][1]},
+                    "opcion": pregunta['respuestas'][1][1]},
                 {   "isCorrect": pregunta['respuestas'][2][0],
-                    "opcion3": pregunta['respuestas'][2][1]},
+                    "opcion": pregunta['respuestas'][2][1]},
                 {   "isCorrect": pregunta['respuestas'][3][0],
-                    "opcion4": pregunta['respuestas'][3][1]},
+                    "opcion": pregunta['respuestas'][3][1]},
             ]}
 
     collection.insert_one(p)
@@ -132,7 +136,12 @@ for pregunta in preguntasT2:
 
 # # Una pregunta al azar
 # x = collection.aggregate([{ "$sample": { "size": 1 } }])
+
 # # Una pregunta al azar de un tema concreto
 # # x = collection.aggregate([ { "$match": { "tema": "2" }}, {"$sample": { "size": 1 } }])
 
-# pprint.pprint(list(x))
+# # Manipular elementos resultado
+# result = list(x)
+# for opcion in result[0]['opciones']:
+#     print(opcion['isCorrect'])
+#     print(opcion['opcion'])

@@ -8,19 +8,41 @@ stories:
   - action: action_usuario_existe
   - checkpoint: check_usuario_existe
 
-- story: saludar usuario nuevo y añadir BD
+
+- story: saludar usuario nuevo y pedir nombre
   steps:
   - checkpoint: check_usuario_existe
   - slot_was_set:
     - usuario_existe: false
   - action: utter_introduce
-  - action: utter_ask_name
+  # - action: utter_ask_nombre_usuario
+  - action: nombre_usuario_form
+  - active_loop: nombre_usuario_form
   - intent: introduce
     entities:
     - nombre_usuario
-  - action: action_guardar_nombre_usuario
-  - action: utter_user_registered
-  - action: utter_ask_for_instructions
+  # - slot_was_set:
+  #   - requested_slot: null
+  # - intent: introduce
+  # - checkpoint: check_registrar_usuario
+  # - action: action_guardar_nombre_usuario
+  # - action: utter_user_registered
+  # - action: utter_ask_for_instructions
+
+
+# - story: registrar usuario nuevo
+#   condition:
+#   - active_loop: nombre_usuario_form
+#   steps:
+#   - action: nombre_usuario_form
+#   - active_loop: null
+#   - slot_was_set:
+#     - requested_slot: null
+#   # - checkpoint: check_registrar_usuario
+#   - action: action_guardar_nombre_usuario
+#   - action: utter_user_registered
+#   - action: utter_ask_for_instructions
+
 
 - story: saludar usuario existente
   steps:
@@ -30,16 +52,111 @@ stories:
   - action: utter_greet_user
   - action: utter_ask_for_instructions
 
+
 - story: registrarse en asignaturas
   steps:
   - intent: registrar_asignatura
   - action: utter_ask_anyo
   - intent: escoger_anyo
-  - slot_was_set:
-    - anyo
+    entities:
+      - anyo
   - action: action_lista_asignaturas_anyo_button
   - intent: registrar_asignatura_codigo
-  # - slot_was_set:
-  #   - asignatura_codigo
+    entities:
+      - asignatura_codigo
   - action: action_registrar_asignatura_codigo
   - action: utter_ask_for_instructions
+
+# BASE VERSIONES 1-3
+- story: preguntas asignatura
+  steps:
+  - slot_was_set:
+    - mas_preguntas: null
+  - intent: preguntas_asignatura
+  - action: action_lista_asignaturas_preguntas
+  - intent: preguntas_asignatura_codigo
+    entities:
+      - asignatura_codigo
+  - action: action_preguntas_asignatura
+  - intent: contestar_pregunta
+    entities:
+      - respuesta_correcta
+  - action: action_respuesta_correcta
+  # - action: utter_ask_for_instructions
+  - checkpoint: mas_preguntas_check
+
+# ----------------------- VERSION 3 -----------------------
+- story: mas preguntas asignatura
+  steps:
+  - intent: affirm
+  - slot_was_set:
+    - mas_preguntas: True
+  - action: action_lista_asignaturas_preguntas
+  - intent: preguntas_asignatura_codigo
+    entities:
+      - asignatura_codigo
+  - action: action_preguntas_asignatura
+  - intent: contestar_pregunta
+    entities:
+      - respuesta_correcta
+  - action: action_respuesta_correcta
+  # - action: utter_ask_for_instructions
+  - action: mas_preguntas_form
+  
+
+- story: no mas preguntas
+  steps:
+  - slot_was_set:
+    - mas_preguntas: False
+  - action: utter_ask_for_instructions
+
+
+
+# ----------------------- VERSION 2 -----------------------
+# - story: mas preguntas
+#   steps:
+#   - checkpoint: mas_preguntas_check
+#   - action: mas_preguntas_form
+#   - intent: affirm
+#   - slot_was_set: 
+#     - mas_preguntas: True
+#   # - action: action_lista_asignaturas_preguntas
+#   # - intent: preguntas_asignatura_codigo
+#   #   entities:
+#   #     - asignatura_codigo
+#   - action: action_preguntas_asignatura
+#   - intent: contestar_pregunta
+#     entities:
+#       - respuesta_correcta
+#   - action: action_respuesta_correcta
+#   # - action: utter_ask_for_instructions
+#   - action: mas_preguntas_form
+#   - checkpoint: mas_preguntas_check 
+
+
+# - story: no mas preguntas
+#   steps:
+#   - checkpoint: mas_preguntas_check
+#   - action: mas_preguntas_form
+#   - intent: deny
+#   - slot_was_set:
+#     - mas_preguntas: False
+#   - action: utter_ask_for_instructions
+
+
+# ----------------------- VERSION 1 -----------------------
+# - story: preguntas asignatura VA
+#   steps:
+#   - slot_was_set:
+#     - mas_preguntas: null
+#   - intent: preguntas_asignatura
+#   - action: action_lista_asignaturas_preguntas
+#   - intent: preguntas_asignatura_codigo
+#     entities:
+#       - asignatura_codigo
+#   - action: action_preguntas_asignatura
+#   - intent: contestar_pregunta
+#     entities:
+#       - respuesta_correcta
+#   - action: action_respuesta_correcta
+#   - action: utter_ask_for_instructions

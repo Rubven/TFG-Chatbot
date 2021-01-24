@@ -106,3 +106,26 @@ nlu:
     - Apuntar asignatura
     - Apuntarme a una asignatura
     - Formar parte de una asignatura
+    - Inscribirse en asignatura
+    - Inscríbeme
+    - Apúntame
+    - Regístrame
+
+- intent: preguntas_asignatura
+  examples: |
+    - Preguntas
+    - Hazme preguntas
+    - Quiero que me hagas preguntas
+    - Repasar
+    - Quiero repasar
+    - Ayúdame a estudiar
+    - Hazme un test
+    - Test
+    - Quiz
+    - preguntar
+    - repaso
+
+- intent: contestar_pregunta
+  examples: |
+    - True
+    - False
