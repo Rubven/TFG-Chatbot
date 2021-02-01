@@ -186,7 +186,7 @@ class ActionListaAsignaturasAnyo(Action):
 				dispatcher.utter_message("No hay asignaturas de ese año")
 
 			else:
-				dispatcher.utter_message("Asignaturas año {}:".format(anyo))
+				dispatcher.utter_message("Selecciona a qué asignatura quieres registrarte:")
 				for item in result:
 					dispatcher.utter_message(item[0])
 

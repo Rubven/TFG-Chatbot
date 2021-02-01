@@ -124,6 +124,9 @@ nlu:
     - Quiz
     - preguntar
     - repaso
+    - estudiar
+    - me ayudas a estudiar?
+    - quiero hacer repaso
 
 - intent: contestar_pregunta
   examples: |

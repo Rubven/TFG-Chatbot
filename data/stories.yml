@@ -83,7 +83,7 @@ stories:
       - respuesta_correcta
   - action: action_respuesta_correcta
   # - action: utter_ask_for_instructions
-  - checkpoint: mas_preguntas_check
+  # - checkpoint: mas_preguntas_check
 
 # ----------------------- VERSION 3 -----------------------
 - story: mas preguntas asignatura

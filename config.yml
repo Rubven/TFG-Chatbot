@@ -19,10 +19,10 @@ pipeline:
   - name: SpacyEntityExtractor
     dimensions: ["PERSON"]
   - name: DIETClassifier
-    # epochs: 100
+    epochs: 100
   - name: EntitySynonymMapper
   - name: ResponseSelector
-    # epochs: 100
+    epochs: 100
   - name: FallbackClassifier
     threshold: 0.4
     ambiguity_threshold: 0.1
