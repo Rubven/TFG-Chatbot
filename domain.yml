@@ -16,6 +16,7 @@ intents:
   - preguntas_asignatura
   - preguntas_asignatura_codigo
   - contestar_pregunta
+  - no_mas_preguntas
 
 # obtenidas con la NLU Pipeline
 entities:

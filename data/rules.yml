@@ -42,3 +42,8 @@ rules:
   - action: utter_user_registered
   - action: utter_ask_for_instructions
 
+
+- rule: no mas preguntas
+  steps:
+  - intent: no_mas_preguntas
+  - action: utter_ask_for_instructions

@@ -84,31 +84,32 @@ stories:
   - action: action_respuesta_correcta
   # - action: utter_ask_for_instructions
   # - checkpoint: mas_preguntas_check
+  # - action: mas_preguntas_form
 
 # ----------------------- VERSION 3 -----------------------
-- story: mas preguntas asignatura
-  steps:
-  - intent: affirm
-  - slot_was_set:
-    - mas_preguntas: True
-  - action: action_lista_asignaturas_preguntas
-  - intent: preguntas_asignatura_codigo
-    entities:
-      - asignatura_codigo
-  - action: action_preguntas_asignatura
-  - intent: contestar_pregunta
-    entities:
-      - respuesta_correcta
-  - action: action_respuesta_correcta
-  # - action: utter_ask_for_instructions
-  - action: mas_preguntas_form
+# - story: mas preguntas asignatura
+#   steps:
+#   - intent: affirm
+#   - slot_was_set:
+#     - mas_preguntas: True
+#   - action: action_lista_asignaturas_preguntas
+#   - intent: preguntas_asignatura_codigo
+#     entities:
+#       - asignatura_codigo
+#   - action: action_preguntas_asignatura
+#   - intent: contestar_pregunta
+#     entities:
+#       - respuesta_correcta
+#   - action: action_respuesta_correcta
+#   # - action: utter_ask_for_instructions
+#   # - action: mas_preguntas_form
   
 
-- story: no mas preguntas
-  steps:
-  - slot_was_set:
-    - mas_preguntas: False
-  - action: utter_ask_for_instructions
+# - story: no mas preguntas
+#   steps:
+#   - slot_was_set:
+#     - mas_preguntas: False
+#   - action: utter_ask_for_instructions
 
 
 

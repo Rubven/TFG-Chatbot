@@ -345,20 +345,26 @@ class ActionPreguntaAsignatura(Action):
 
 				result = list(query)
 				mybuttons = []
+				opciones = ['A', 'B', 'C', 'D', 'F', 'G', 'H', 'I']
+				i = 0
 				for opcion in result[0]['opciones']:
 					slotname={ "respuesta_correcta": opcion['isCorrect']}
 					json_slotname = json.dumps(slotname)
-					button={"title":opcion['opcion'], "payload":"/contestar_pregunta{}".format(json_slotname)}
+					button={"title":opciones[i], "payload":"/contestar_pregunta{}".format(json_slotname)}
 					mybuttons.append(button)
+					i += 1
 
-				dispatcher.utter_message("Pregunta número {}: {}".format(result[0]['numPregunta'], result[0]['enunciado']), buttons= mybuttons)
+				i = 0
+				dispatcher.utter_message("Pregunta número {}:\n{}".format(result[0]['numPregunta'], result[0]['enunciado']))
+				for opcion in result[0]['opciones']:	
+					dispatcher.utter_message('{}: '.format(opciones[i])+opcion['opcion'])
+					i += 1
+				dispatcher.utter_message('Selecciona la respuesta correcta:',buttons=mybuttons)
 				return[SlotSet("num_pregunta", result[0]['numPregunta'])]
 			
 			else:
 				dispatcher.utter_message("No hay preguntas de esta asignatura")
 	
-		
-
 
 class ActionRespuestaCorrecta(Action):
 	def name(self) -> Text:
@@ -397,3 +403,16 @@ class ActionRespuestaCorrecta(Action):
 						})
 
 						dispatcher.utter_message("La respuesta correcta es: {}".format(x[0]["opciones"][0]["opcion"]))
+						
+						codigo = tracker.get_slot('asignatura_codigo')
+						slotname={ "asignatura_codigo": codigo}
+						json_slotname = json.dumps(slotname)
+						buttonYes={"title":"Sí", "payload":"/preguntas_asignatura_codigo{}".format(json_slotname)}
+						buttonNo={"title":"No", "payload":"/no_mas_preguntas"}
+						mybuttons = []
+						mybuttons.append(buttonYes)
+						mybuttons.append(buttonNo)
+						
+						print(mybuttons)
+						dispatcher.utter_message("Quieres que te haga más preguntas?", buttons=mybuttons)
+						
