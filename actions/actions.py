@@ -1,4 +1,4 @@
-# modificado de: https://rasa.com/docs/action-server/sdk-actions
+# Modificado de: https://rasa.com/docs/action-server/sdk-actions
 from typing import Any, Text, Dict, List, Optional
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
@@ -7,7 +7,7 @@ from rasa_sdk.forms import FormValidationAction
 import json
 
 
-# conexion a BD MYSQL
+# Conexión a BD MYSQL, con credenciales del servidor
 import mysql.connector
 mydb = mysql.connector.connect(
 	user='rasa',
@@ -19,12 +19,13 @@ mydb = mysql.connector.connect(
 mycursor = mydb.cursor()
 
 
-# conexion a MongoDB
+# Conexión a MongoDB
 import pymongo
 client = pymongo.MongoClient("localhost", 27017)
 mongodb = client["preguntas"]
 
 
+# Consulta que devuelve el nombre de todas las asignaturas
 class ActionVerAsignaturas(Action):
 	def name(self) -> Text:
 		return "action_ver_asignaturas"
@@ -42,9 +43,8 @@ class ActionVerAsignaturas(Action):
 			dispatcher.utter_message(item[0])
 		mycursor.reset()
 
-		# return []
 
-
+# Devuelve lista de acciones que puede realizar el bot
 class ActionListaAcciones(Action):
 	def name(self) -> Text:
 		return "action_lista_acciones"
@@ -67,9 +67,9 @@ class ActionListaAcciones(Action):
 		for accion in acciones:
 			dispatcher.utter_message(accion)
 
-		# return []
 
-
+# Consulta en BD si el usuario existe y devuelve un booleano. 
+# Si el usuario existe, devuelve también el nombre.
 class ActionUsuarioExiste(Action):
 	def name(self) -> Text:
 		return "action_usuario_existe"
@@ -79,31 +79,28 @@ class ActionUsuarioExiste(Action):
 			tracker: Tracker,
 			domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-		# Store uid
 		uid = tracker.sender_id
-
-		q = ("SELECT COUNT(*) FROM usuario WHERE usuario.id='{}'".format(uid))
-		mycursor.execute(q)
-		result = mycursor.fetchall()
-		mycursor.reset()
-
-		if result[0][0] >= 1:
-			#return[SlotSet("usuario_existe", True), FollowupAction("utter_greet_user")]
-			
-			# Coger nombre y setearlo
-			q = ("SELECT nombre FROM usuario WHERE usuario.id='{}'".format(uid))
+		
+		# Control de errores
+		if uid != None:
+			q = ("SELECT COUNT(*) FROM usuario WHERE usuario.id='{}'".format(uid))
 			mycursor.execute(q)
 			result = mycursor.fetchall()
 			mycursor.reset()
-			return[SlotSet("usuario_existe", 1.0), SlotSet("nombre_usuario", result[0][0])]
-			# return[SlotSet('usuario_existe', True), SlotSet("nombre_usuario", result[0][0])]
 
-		else:
-			#return[SlotSet("usuario_existe", False), FollowupAction("utter_introduce")]
-			return[SlotSet("usuario_existe", 0.0)]
-			# return[SlotSet('usuario_existe', False)]
+			# Si la consulta devuelve al menos un resultado, mirar el nombre para devolverlo
+			if result[0][0] >= 1:
+				q = ("SELECT nombre FROM usuario WHERE usuario.id='{}'".format(uid))
+				mycursor.execute(q)
+				result = mycursor.fetchall()
+				mycursor.reset()
+				return[SlotSet("usuario_existe", 1.0), SlotSet("nombre_usuario", result[0][0])]
 
+			else:
+				return[SlotSet("usuario_existe", 0.0)]
+			
 
+# Guardar en base de datos el nombre proporcionado por el usuario
 class ActionGuardarNombreUsuario(Action):
 	def name(self) -> Text:
 		return "action_guardar_nombre_usuario"
@@ -116,9 +113,10 @@ class ActionGuardarNombreUsuario(Action):
 		uid = tracker.sender_id	
 		nombre = tracker.get_slot('nombre_usuario')
 		
+		# Control de errores
 		if uid != None and nombre != None:
 
-			# Comprobar si usuario existe:
+			# Comprobar si el usuario existe:
 			q = ("SELECT * FROM usuario WHERE usuario.id='{}'".format(uid))
 			mycursor.execute(q)
 			result = mycursor.fetchall()
@@ -129,14 +127,12 @@ class ActionGuardarNombreUsuario(Action):
 				
 			else:
 				q = ("""INSERT IGNORE INTO usuario (id, nombre) VALUES ('{uid}','{nombre}');""".format(uid=uid, nombre=nombre))
-
 				mycursor.execute(q)
 				mydb.commit()
 				mycursor.reset()
 
-			# return []
 
-
+# Devuelve lista de asignaturas a las que está registrado el usuario
 class ActionListaAsignaturasRegistrado(Action):
 	def name(self) -> Text:
 		return "action_lista_asignaturas_registrado"
@@ -147,6 +143,8 @@ class ActionListaAsignaturasRegistrado(Action):
 			domain):
 			
 		uid = tracker.sender_id	
+
+		# Control de errores
 		if uid != None:
 			q = ("""SELECT nombre 
 					FROM asignatura, usuario, usuario_asignatura 
@@ -160,10 +158,12 @@ class ActionListaAsignaturasRegistrado(Action):
 			for item in result:
 				dispatcher.utter_message(item[0])
 			mycursor.reset()
+		
+		else:
+			dispatcher.utter_message("No hay ninguna asignatura registrada")
 
-		# return []
 
-
+# Devuelve lista de asignaturas de un curso concreto
 class ActionListaAsignaturasAnyo(Action):
 	def name(self) -> Text:
 		return "action_lista_asignaturas_anyo"
@@ -174,6 +174,8 @@ class ActionListaAsignaturasAnyo(Action):
 			domain):
 			
 		anyo = tracker.get_slot('anyo')	
+
+		# Control de errores
 		if anyo != None:	
 			q = ("""SELECT nombre 
 					FROM asignatura
@@ -192,9 +194,9 @@ class ActionListaAsignaturasAnyo(Action):
 
 			mycursor.reset()
 
-		# return []
 
-
+# Devuelve la lista de asignaturas del curso especificado en formato button
+# para que el usuario pueda registrarse en la que seleccione
 class ActionListaAsignaturasAnyoButton(Action):
 	def name(self) -> Text:
 		return "action_lista_asignaturas_anyo_button"
@@ -217,26 +219,19 @@ class ActionListaAsignaturasAnyoButton(Action):
 				dispatcher.utter_message("No hay asignaturas de ese año")
 
 			else:
-				# dispatcher.utter_message("Asignaturas año {}:".format(anyo))
-
 				mybuttons = []
-
 				for item in result:
-					# formato: [{'title': title_name, 'payload': '/intent{slotname: slotvalue}'}, ...]
 					slotname={ "asignatura_codigo": item[1]}
 					json_slotname = json.dumps(slotname)
 					button={"title":item[0], "payload":"/registrar_asignatura_codigo{}".format(json_slotname)}
-					# button={"title":item[0], "payload": """/registrar_asignatura{"""+"""{slot}}""".format(slot=slotname)}
-					# button={"title":item[0], "payload": """/registrar_asignatura{""""{slot}"+""":{name}}""".format(slot=slotname, name = item[1])}
 					mybuttons.append(button)
 
 				dispatcher.utter_message("Asignaturas año {}:".format(anyo), buttons= mybuttons)
 				
 			mycursor.reset()
 
-		# return []
 
-
+# Dados un UID y CODIGO_ASIGNATURA, da de alta la relación en BD
 class ActionRegistrarAsignaturaCodigo(Action):
 	def name(self) -> Text:
 		return "action_registrar_asignatura_codigo"
@@ -249,6 +244,7 @@ class ActionRegistrarAsignaturaCodigo(Action):
 		uid = tracker.sender_id
 		codigo = tracker.get_slot('asignatura_codigo')
 
+		# Control de errores
 		if codigo != None:	
 
 			q = ("""SELECT asignatura.nombre 
@@ -273,9 +269,9 @@ class ActionRegistrarAsignaturaCodigo(Action):
 				mycursor.reset()
 				dispatcher.utter_message("Registrado")
 
-			# return []
 
-
+# Comprueba qué asignaturas tiene registradas el usuario y devuelve una lista para
+# que seleccione de cuál quiere preguntas
 class ActionListaAsignaturasPreguntas(Action):
 	def name(self) -> Text:
 		return "action_lista_asignaturas_preguntas"
@@ -300,17 +296,12 @@ class ActionListaAsignaturasPreguntas(Action):
 			dispatcher.utter_message("No tienes asignaturas registradas. Inscríbete primero.")
 
 		else:
-			# dispatcher.utter_message("Asignaturas año {}:".format(anyo))
-
 			mybuttons = []
 
 			for item in result:
-				# formato: [{'title': title_name, 'payload': '/intent{slotname: slotvalue}'}, ...]
 				slotname={ "asignatura_codigo": item[1]}
 				json_slotname = json.dumps(slotname)
 				button={"title":item[0], "payload":"/preguntas_asignatura_codigo{}".format(json_slotname)}
-				# button={"title":item[0], "payload": """/registrar_asignatura{"""+"""{slot}}""".format(slot=slotname)}
-				# button={"title":item[0], "payload": """/registrar_asignatura{""""{slot}"+""":{name}}""".format(slot=slotname, name = item[1])}
 				mybuttons.append(button)
 
 			dispatcher.utter_message("De qué asignatura quieres que te pregunte?", buttons= mybuttons)
@@ -318,6 +309,8 @@ class ActionListaAsignaturasPreguntas(Action):
 		mycursor.reset()
 
 
+# Genera preguntas al azar de la asignatura especificada de hasta 8 opciones (los casos actuales son todos de 4).
+# Contiene la opción de generar preguntas de un tema concreto también.
 class ActionPreguntaAsignatura(Action):
 	def name(self) -> Text:
 		return "action_preguntas_asignatura"
@@ -330,7 +323,7 @@ class ActionPreguntaAsignatura(Action):
 		uid = tracker.sender_id
 		codigo = tracker.get_slot('asignatura_codigo')
 
-		# Cntrol de errores
+		# Control de errores
 		if codigo != None:
 			# Comprobar si hay preguntas de la asignatura
 			collist = mongodb.list_collection_names()
@@ -340,8 +333,8 @@ class ActionPreguntaAsignatura(Action):
 				# Pregunta al azar
 				query = collection.aggregate([{ "$sample": { "size": 1 } }])
 				
-				# Pregunta de un tema concreto (tema = STRING!)
-				# collection.aggregate([ { "$match": { "tema": "2" }}, {"$sample": { "size": 1 } }])
+				# Pregunta de un tema concreto (tema  t = STRING!)
+				# query = collection.aggregate([{ "$match": { "tema": "t" }}, {"$sample": { "size": 1 } }])
 
 				result = list(query)
 				mybuttons = []
@@ -366,6 +359,8 @@ class ActionPreguntaAsignatura(Action):
 				dispatcher.utter_message("No hay preguntas de esta asignatura")
 	
 
+# Comprueba si la respuesta es correcta o no, devuelve la respuesta correcta en caso de haber fallado
+# Y genera botones para decidir si hacer más preguntas o no.
 class ActionRespuestaCorrecta(Action):
 	def name(self) -> Text:
 		return "action_respuesta_correcta"
@@ -378,7 +373,7 @@ class ActionRespuestaCorrecta(Action):
 		uid = tracker.sender_id
 		respuesta_correcta = tracker.get_slot('respuesta_correcta')
 
-		# Cntrol de errores
+		# Control de errores
 		if respuesta_correcta != None:
 			
 			if respuesta_correcta:
@@ -403,16 +398,15 @@ class ActionRespuestaCorrecta(Action):
 						})
 
 						dispatcher.utter_message("La respuesta correcta es: {}".format(x[0]["opciones"][0]["opcion"]))
-						
-						codigo = tracker.get_slot('asignatura_codigo')
-						slotname={ "asignatura_codigo": codigo}
-						json_slotname = json.dumps(slotname)
-						buttonYes={"title":"Sí", "payload":"/preguntas_asignatura_codigo{}".format(json_slotname)}
-						buttonNo={"title":"No", "payload":"/no_mas_preguntas"}
-						mybuttons = []
-						mybuttons.append(buttonYes)
-						mybuttons.append(buttonNo)
-						
-						print(mybuttons)
-						dispatcher.utter_message("Quieres que te haga más preguntas?", buttons=mybuttons)
-						
+
+			# Preguntar si hacer más preguntas		
+			codigo = tracker.get_slot('asignatura_codigo')
+			slotname={ "asignatura_codigo": codigo}
+			json_slotname = json.dumps(slotname)
+			buttonYes={"title":"Sí", "payload":"/preguntas_asignatura_codigo{}".format(json_slotname)}
+			buttonNo={"title":"No", "payload":"/no_mas_preguntas"}
+			mybuttons = []
+			mybuttons.append(buttonYes)
+			mybuttons.append(buttonNo)
+			
+			dispatcher.utter_message("Quieres que te haga más preguntas?", buttons=mybuttons)					

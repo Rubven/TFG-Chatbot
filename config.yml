@@ -4,7 +4,6 @@ language: es
 
 pipeline:
 # See https://rasa.com/docs/rasa/tuning-your-model for more information.
-#  - name: WhitespaceTokenizer
   - name: SpacyNLP
     model: es_core_news_lg
   - name: SpacyTokenizer
@@ -16,7 +15,7 @@ pipeline:
     min_ngram: 1
     max_ngram: 4
   - name: SpacyEntityExtractor
-    # dimensions: ["PERSON"]
+    dimensions: ["PERSON"]
   - name: DIETClassifier
     epochs: 100
   - name: EntitySynonymMapper
@@ -29,9 +28,7 @@ pipeline:
 # Configuration for Rasa Core.
 # https://rasa.com/docs/rasa/core/policies/
 policies:
-# # No configuration for policies was provided. The following default policies were used to train your model.
-# # If you'd like to customize them, uncomment and adjust the policies.
-# # See https://rasa.com/docs/rasa/policies for more information.
+# See https://rasa.com/docs/rasa/policies for more information.
   - name: AugmentedMemoizationPolicy
     max_history: 5
   - name: TEDPolicy

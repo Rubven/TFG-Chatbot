@@ -1,6 +1,6 @@
 version: "2.0"
 
-# intents
+
 intents:
   - greet
   - introduce
@@ -18,7 +18,7 @@ intents:
   - contestar_pregunta
   - no_mas_preguntas
 
-# obtenidas con la NLU Pipeline
+
 entities:
   - nombre_usuario
   - asignatura
@@ -29,27 +29,22 @@ entities:
   - mas_preguntas
   - respuesta_correcta
 
-# memoria del bot
+
 slots:
   nombre_usuario:
     type: text
-    # influence_conversation: true
 
   user_id:
     type: text  
-    # influence_conversation: true
 
   usuario_existe:
     type: bool
-    # influence_conversation: true
 
   anyo:
     type: text
-    # influence_conversation: true
 
   usuario_registrado_asignatura:
     type: bool
-    # influence_conversation: true
 
   asignatura_codigo:
     type: text
@@ -65,25 +60,13 @@ slots:
     type: text
 
 
-# formularios
 forms:
   nombre_usuario_form:
     nombre_usuario:
     - type: from_text
       intent: introduce
 
-  mas_preguntas_form:
-    mas_preguntas:
-    - type: from_intent
-      value: false
-      intent: deny
 
-    - type: from_intent
-      value: true
-      intent: affirm
-
-
-# respuestas
 responses:
   utter_introduce:
   - text: "Hola! Soy Edubot."
@@ -130,7 +113,6 @@ responses:
   - text: "Quieres que te haga más preguntas?"
 
 
-# cumstom actions
 actions:
   - action_ver_asignaturas
   - action_lista_acciones

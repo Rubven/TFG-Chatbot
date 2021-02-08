@@ -37,8 +37,6 @@ nlu:
 - intent: affirm
   examples: |
     - sí
-    - se
-    - seh
     - correcto
     - en efecto
     - así es
@@ -48,7 +46,6 @@ nlu:
 - intent: deny
   examples: |
     - no
-    - nah
     - nunca
     - creo que no
     - no es así

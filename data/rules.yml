@@ -28,7 +28,7 @@ rules:
   - action: action_lista_acciones
   - action: utter_ask_for_instructions
 
-
+# Registrar usuario cuando se detecta que es nuevo
 - rule: registrar usuario nuevo
   condition:
   - active_loop: nombre_usuario_form
@@ -37,12 +37,11 @@ rules:
   - active_loop: null
   - slot_was_set:
     - requested_slot: null
-  # - checkpoint: check_registrar_usuario
   - action: action_guardar_nombre_usuario
   - action: utter_user_registered
   - action: utter_ask_for_instructions
 
-
+# Pedir instrucciones cuando el usuario no quiera más preguntas
 - rule: no mas preguntas
   steps:
   - intent: no_mas_preguntas
